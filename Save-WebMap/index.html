@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <title>Save a web map | Sample | ArcGIS Maps SDK for JavaScript 4.32</title>
+
+    <link
+      rel="stylesheet"
+      href="https://js.arcgis.com/4.32/esri/themes/light/main.css"
+    />
+    <script src="https://js.arcgis.com/4.32/"></script>
+
+    <link rel="stylesheet" href="./src/style.css" />
+  </head>
+
+  <body>
+    <div id="viewDiv"></div>
+    <div id="sidebarDiv" class="esri-widget">
+      <h4 class="esri-heading">Save WebMap</h4>
+      <label class="esri-feature-form__label">Title</label>
+      <input
+        id="webMapTitle"
+        type="text"
+        class="esri-input"
+        value="My WebMap"
+      />
+      <input
+        id="saveWebMap"
+        type="button"
+        value="Save"
+        disabled
+        class="esri-button"
+      />
+    </div>
+    <div id="overlayDiv" class="esri-widget">
+      <h4 class="esri-heading" id="head"></h4>
+      <label id="info"></label>
+      <input type="button" value="OK" class="esri-button" />
+    </div>
+    <script type="module" src="./src/saveWebMap.js"></script>
+  </body>
+</html>
