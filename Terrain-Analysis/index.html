@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Terrain Analysis</title>
+
+    <!-- Load styles -->
+    <link rel="stylesheet" href="./src/style.css" />
+
+    <!-- Load Calcite components from CDN -->
+    <script
+      type="module"
+      src="https://js.arcgis.com/calcite-components/3.0.3/calcite.esm.js"
+    ></script>
+
+    <!-- Load the ArcGIS Maps SDK for JavaScript from CDN -->
+    <link
+      rel="stylesheet"
+      href="https://js.arcgis.com/4.32/esri/themes/dark/main.css"
+    />
+    <script src="https://js.arcgis.com/4.32/"></script>
+
+    <!-- Load Map components from CDN-->
+    <script
+      type="module"
+      src="https://js.arcgis.com/map-components/4.32/arcgis-map-components.esm.js"
+    ></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- Add ArcGIS Scene -->
+      <arcgis-scene item-id="dac0b9b188e146baa504c9cfb6eb8d00">
+        <!-- Add ArcGIS Scene Controls -->
+        <arcgis-zoom position="top-left"></arcgis-zoom>
+        <!-- Add ArcGIS Navigation Toggle -->
+        <arcgis-navigation-toggle
+          position="top-left"
+        ></arcgis-navigation-toggle>
+        <!-- Add ArcGIS Compass -->
+        <arcgis-compass position="top-left"></arcgis-compass>
+        <!-- Add ArcGIS Expand -->
+        <arcgis-expand position="top-left">
+          <arcgis-legend></arcgis-legend>
+        </arcgis-expand>
+        <!-- Add ArcGIS Basemap Toggle -->
+        <arcgis-basemap-toggle position="bottom-left"></arcgis-basemap-toggle>
+        <!-- Add ArcGIS Placement -->
+        <arcgis-placement position="top-right">
+          <div id="terrainAnalysisDiv">
+            <!-- Add ArcGIS Segmented Control -->
+            <calcite-segmented-control id="analysisModeSegmentedControl">
+              <!-- Add ArcGIS Segmented Control Items -->
+              <calcite-segmented-control-item
+                icon-start="surface"
+                value="Custom"
+                checked
+                >Custom</calcite-segmented-control-item
+              >
+              <calcite-segmented-control-item
+                icon-start="altitude"
+                value="Elevation"
+                >Elevation</calcite-segmented-control-item
+              >
+              <calcite-segmented-control-item
+                icon-start="take-pedestrian-ramp"
+                value="Slope"
+                >Slope</calcite-segmented-control-item
+              >
+            </calcite-segmented-control>
+            <br />
+            <calcite-label scale="s">
+              <!-- Add ArcGIS Slider -->
+              Transparency | %
+              <calcite-slider
+                id="opacitySlider"
+                value="20"
+                label-handles
+                max-label="100"
+                min-label="0"
+                ticks="10"
+              ></calcite-slider>
+            </calcite-label>
+
+            <div id="customAnalysisDiv">
+              <!-- Add ArcGIS Label -->
+              <calcite-label scale="s">
+                Elevation | m.a.s.l
+                <calcite-slider
+                  id="elevationSlider"
+                  min-value="2000"
+                  max-value="9000"
+                  min="-500"
+                  max="9000"
+                  ticks="500"
+                  step="50"
+                  snap
+                  label-handles
+                  max-label="Max Elevation"
+                  min-label="Min Elevation"
+                ></calcite-slider>
+              </calcite-label>
+              <!-- Add ArcGIS Label -->
+              <calcite-label scale="s">
+                Slope | °
+                <calcite-slider
+                  id="slopeSlider"
+                  min-value="10"
+                  max-value="90"
+                  min="0"
+                  max="90"
+                  ticks="5"
+                  step="1"
+                  snap
+                  label-handles
+                  max-label="Max Slope"
+                  min-label="Min Slope"
+                ></calcite-slider>
+              </calcite-label>
+              <!-- Add ArcGIS Label -->
+              <calcite-label scale="s">
+                Aspect
+                <div id="compassRoseDiv">
+                  <svg
+                    id="compassRoseSvg"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="-50 -50 100 100"
+                  >
+                    <!-- North -->
+                    <polygon
+                      points="0,-40 5,-15 -5,-15"
+                      data-aspect="n"
+                      class="roseDirection"
+                    />
+                    <text x="0" y="-45" text-anchor="middle">N</text>
+
+                    <!-- North-East -->
+                    <polygon
+                      points="22,-22 15,-5 5,-15"
+                      data-aspect="ne"
+                      class="roseDirection"
+                    />
+                    <text x="30" y="-30" text-anchor="middle">NE</text>
+
+                    <!-- East -->
+                    <polygon
+                      points="40,0 15,5 15,-5"
+                      data-aspect="e"
+                      class="roseDirection"
+                    />
+                    <text x="45" y="2" text-anchor="middle">E</text>
+
+                    <!-- South-East -->
+                    <polygon
+                      points="22,22 5,15 15,5"
+                      data-aspect="se"
+                      class="roseDirection active"
+                    />
+                    <text x="30" y="30" text-anchor="middle">SE</text>
+
+                    <!-- South -->
+                    <polygon
+                      points="0,40 -5,15 5,15"
+                      data-aspect="s"
+                      class="roseDirection active"
+                    />
+                    <text x="0" y="48" text-anchor="middle">S</text>
+
+                    <!-- South-West -->
+                    <polygon
+                      points="-22,22 -15,5 -5,15"
+                      data-aspect="sw"
+                      class="roseDirection active"
+                    />
+                    <text x="-30" y="30" text-anchor="middle">SW</text>
+
+                    <!-- West -->
+                    <polygon
+                      points="-40,0 -15,-5 -15,5"
+                      data-aspect="w"
+                      class="roseDirection"
+                    />
+                    <text x="-45" y="2" text-anchor="middle">W</text>
+
+                    <!-- North-West -->
+                    <polygon
+                      points="-22,-22 -5,-15 -15,-5"
+                      data-aspect="nw"
+                      class="roseDirection"
+                    />
+                    <text x="-30" y="-30" text-anchor="middle">NW</text>
+                  </svg>
+                </div>
+              </calcite-label>
+              <!-- Add ArcGIS Label -->
+              <calcite-label scale="s">
+                Color
+                <!-- Add ArcGIS Popover -->
+                <calcite-popover reference-element="colorButton" closable>
+                  <!-- Add ArcGIS Color Picker -->
+                  <calcite-color-picker
+                    id="colorPicker"
+                    format="rgb"
+                    closable
+                  ></calcite-color-picker>
+                </calcite-popover>
+                <button id="colorButton"></button>
+              </calcite-label>
+            </div>
+          </div>
+        </arcgis-placement>
+      </arcgis-scene>
+      <script type="module" src="/src/terrainAnalysis.js"></script>
+    </div>
+  </body>
+</html>
