@@ -16,50 +16,53 @@
     <script src="https://js.arcgis.com/4.32/"></script>
 
     <!-- ArcGIS Map Components v4.32 -->
-    <script type="module" src="https://js.arcgis.com/map-components/4.32/arcgis-map-components.esm.js"></script>
+    <script
+      type="module"
+      src="https://js.arcgis.com/map-components/4.32/arcgis-map-components.esm.js"
+    ></script>
 
     <link rel="stylesheet" href="./src/style.css" />
   </head>
 
   <body>
     <div id="viewDiv">
-    <arcgis-map item-id="06ca49d0ddb447e7817cfc343ca30df9">
-      <arcgis-expand position="top-left">
-        <arcgis-legend></arcgis-legend>
-      </arcgis-expand>
+      <arcgis-map item-id="06ca49d0ddb447e7817cfc343ca30df9">
+        <arcgis-expand position="top-left">
+          <arcgis-legend></arcgis-legend>
+        </arcgis-expand>
 
-      <arcgis-expand position="top-left">
-        <arcgis-layer-list></arcgis-layer-list>
-      </arcgis-expand>
+        <arcgis-expand position="top-left">
+          <arcgis-layer-list></arcgis-layer-list>
+        </arcgis-expand>
 
-      <arcgis-expand position="top-left" icon="basemap">
-        <arcgis-basemap-gallery></arcgis-basemap-gallery>
-      </arcgis-expand>
+        <arcgis-expand position="top-left" icon="basemap">
+          <arcgis-basemap-gallery></arcgis-basemap-gallery>
+        </arcgis-expand>
 
-      <div id="sidebarDiv" class="esri-widget">
-        <h4 class="esri-heading">Save WebMap</h4>
-        <label class="esri-feature-form__label">Title</label>
-        <input
-          id="webMapTitle"
-          type="text"
-          class="esri-input"
-          value="My WebMap"
-        />
-        <input
-          id="saveWebMap"
-          type="button"
-          value="Save"
-          disabled
-          class="esri-button"
-        />
-      </div>
-      <div id="overlayDiv" class="esri-widget">
-        <h4 class="esri-heading" id="head"></h4>
-        <label id="info"></label>
-        <input type="button" value="OK" class="esri-button" />
-      </div>
-    </arcgis-map>
-</div>
+        <div id="sidebarDiv" class="esri-widget">
+          <h4 class="esri-heading">Save WebMap</h4>
+          <label class="esri-feature-form__label">Title</label>
+          <input
+            id="webMapTitle"
+            type="text"
+            class="esri-input"
+            value="My WebMap"
+          />
+          <input
+            id="saveWebMap"
+            type="button"
+            value="Save"
+            disabled
+            class="esri-button"
+          />
+        </div>
+        <div id="overlayDiv" class="esri-widget">
+          <h4 class="esri-heading" id="head"></h4>
+          <label id="info"></label>
+          <input type="button" value="OK" class="esri-button" />
+        </div>
+      </arcgis-map>
+    </div>
     <script type="module" src="./src/saveWebMap.js"></script>
   </body>
 </html>
