@@ -213,7 +213,6 @@ if (!arcgisMap.ready) {
 ## Step 10: Import Required Modules
 
 ```javascript
-// 1. Import required modules
 require([
   "esri/geometry/SpatialReference",
   "esri/layers/GeoJSONLayer",
