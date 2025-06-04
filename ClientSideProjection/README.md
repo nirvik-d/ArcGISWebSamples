@@ -5,6 +5,7 @@ This sample demonstrates how to perform client-side projection of geographic dat
 ## Prerequisites
 
 Before you begin, make sure you have:
+
 1. Basic knowledge of JavaScript
 2. Understanding of HTML and CSS
 3. Access to a web browser
@@ -35,25 +36,31 @@ Now create an `index.html` file with the following structure:
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
-  <title>Client-Side Projection Sample</title>
-  <link rel="stylesheet" href="https://js.arcgis.com/4.32/esri/themes/light/main.css">
-  <script src="https://js.arcgis.com/4.32/"></script>
-  <link rel="stylesheet" href="src/style.css">
-</head>
-<body>
-  <div id="viewDiv"></div>
-  <div id="mapSRDiv"></div>
-  <select id="projectWKID">
-    <option value="8857">Web Mercator</option>
-    <option value="102100">Web Mercator Auxiliary Sphere</option>
-    <option value="102113">WGS 1984 World Mercator</option>
-    <option value="102100">WGS 1984 Web Mercator (auxiliary sphere)</option>
-  </select>
-  <script src="src/clientSideProjection.js"></script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <title>Client-Side Projection Sample</title>
+    <link
+      rel="stylesheet"
+      href="https://js.arcgis.com/4.32/esri/themes/light/main.css"
+    />
+    <script src="https://js.arcgis.com/4.32/"></script>
+    <link rel="stylesheet" href="src/style.css" />
+  </head>
+  <body>
+    <div id="viewDiv"></div>
+    <div id="mapSRDiv"></div>
+    <select id="projectWKID">
+      <option value="8857">Web Mercator</option>
+      <option value="102100">Web Mercator Auxiliary Sphere</option>
+      <option value="102113">WGS 1984 World Mercator</option>
+      <option value="102100">WGS 1984 Web Mercator (auxiliary sphere)</option>
+    </select>
+    <script src="src/clientSideProjection.js"></script>
+  </body>
 </html>
 ```
 
@@ -63,7 +70,9 @@ Now create a `style.css` file to style the components:
 
 ```css
 /* ./src/style.css */
-html, body, #viewDiv {
+html,
+body,
+#viewDiv {
   padding: 0;
   margin: 0;
   height: 100%;
@@ -102,101 +111,114 @@ const initialWKID = 8857;
 arcgisMap.spatialReference = new SpatialReference({ wkid: initialWKID });
 ```
 
-## Step 6: Create the GeoJSONLayer for Forest Data and configure it's 
+## Step 6: Create the GeoJSONLayer for Forest Data and configure it's
+
 ```javascript
 const countriesLayer = new GeoJSONLayer({
-    title: "Forest area by country",
-    url: "https://developers.arcgis.com/javascript/latest/sample-code/client-projection/live/percent-forest-area.json",
-    fields: [
-      { name: "OBJECTID", type: "oid" },
-      { name: "Country", type: "string" },
-      { name: "y2015", type: "double" }
-    ],
-    popupTemplate: {
-      title: "{Country}",
-      content: "{expression/per-land-area}",
-      expressionInfos: [{
+  title: "Forest area by country",
+  url: "https://developers.arcgis.com/javascript/latest/sample-code/client-projection/live/percent-forest-area.json",
+  fields: [
+    { name: "OBJECTID", type: "oid" },
+    { name: "Country", type: "string" },
+    { name: "y2015", type: "double" },
+  ],
+  popupTemplate: {
+    title: "{Country}",
+    content: "{expression/per-land-area}",
+    expressionInfos: [
+      {
         title: "per-land-area",
         name: "per-land-area",
-        expression: "IIF(!IsEmpty($feature.y2015), Round($feature.y2015) + '% of the land area in this country is forest.', 'No data')"
-      }]
-    },
-    renderer: {
-      type: "class-breaks",
-      field: "y2015",
-      visualVariables: [{
+        expression:
+          "IIF(!IsEmpty($feature.y2015), Round($feature.y2015) + '% of the land area in this country is forest.', 'No data')",
+      },
+    ],
+  },
+  renderer: {
+    type: "class-breaks",
+    field: "y2015",
+    visualVariables: [
+      {
         type: "color",
         field: "y2015",
         stops: [
           { value: 0, color: "#D0D0CB" },
-          { value: 50, color: "#4F6704" }
-        ]
-      }]
-    },
-    spatialReference: new SpatialReference({ wkid: initialWKID })
-  });
+          { value: 50, color: "#4F6704" },
+        ],
+      },
+    ],
+  },
+  spatialReference: new SpatialReference({ wkid: initialWKID }),
+});
 ```
 
 ## Step 7: Handle WKID Selection Changes
+
 ```javascript
 const wkidSelect = document.getElementById("projectWKID");
 wkidSelect.addEventListener("calciteSelectChange", (event) => {
   arcgisMap.closePopup();
-  arcgisMap.spatialReference = new SpatialReference({ wkid: Number(wkidSelect.value) });
-  document.getElementById("mapSRDiv").innerHTML = `SpatialReference.wkid = <b>${arcgisMap.spatialReference.wkid}</b>`;
+  arcgisMap.spatialReference = new SpatialReference({
+    wkid: Number(wkidSelect.value),
+  });
+  document.getElementById(
+    "mapSRDiv"
+  ).innerHTML = `SpatialReference.wkid = <b>${arcgisMap.spatialReference.wkid}</b>`;
 });
 ```
 
 ## Step 8: Initialize Map When Ready
+
 ```javascript
- async function handleMapReady() {
-    arcgisMap.map = new Map({ layers: [countriesLayer] });
-    arcgisMap.highlights.forEach(highlightOption => {
-      if (highlightOption.name === "default") {
-        highlightOption.fillOpacity = 0;
-      }
-    });
-    arcgisMap.graphics.add({
-      symbol: {
-        type: "simple-fill",
-        color: null,
-        outline: { width: 0.5, color: [208, 208, 203, 0.7] }
-      },
-      geometry: {
-        type: "extent",
-        xmin: -180,
-        xmax: 180,
-        ymin: -90,
-        ymax: 90,
-        spatialReference: SpatialReference.WGS84
-      }
-    });
-    document.getElementById("mapSRDiv").innerHTML = `SpatialReference.wkid = <b>${arcgisMap.spatialReference.wkid}</b>`;
-  }
+async function handleMapReady() {
+  arcgisMap.map = new Map({ layers: [countriesLayer] });
+  arcgisMap.highlights.forEach((highlightOption) => {
+    if (highlightOption.name === "default") {
+      highlightOption.fillOpacity = 0;
+    }
+  });
+  arcgisMap.graphics.add({
+    symbol: {
+      type: "simple-fill",
+      color: null,
+      outline: { width: 0.5, color: [208, 208, 203, 0.7] },
+    },
+    geometry: {
+      type: "extent",
+      xmin: -180,
+      xmax: 180,
+      ymin: -90,
+      ymax: 90,
+      spatialReference: SpatialReference.WGS84,
+    },
+  });
+  document.getElementById(
+    "mapSRDiv"
+  ).innerHTML = `SpatialReference.wkid = <b>${arcgisMap.spatialReference.wkid}</b>`;
+}
 ```
 
 ## Step 9: Add Event Listeners
+
 ```javascript
 if (!arcgisMap.ready) {
-    arcgisMap.addEventListener("arcgisViewReadyChange", handleMapReady, { once: true });
-  } else {
-    handleMapReady();
-  }
+  arcgisMap.addEventListener("arcgisViewReadyChange", handleMapReady, {
+    once: true,
+  });
+} else {
+  handleMapReady();
+}
 ```
 
 ## Step 10: Import Required Modules
+
 ```javascript
 // 1. Import required modules
 require([
   "esri/geometry/SpatialReference",
   "esri/layers/GeoJSONLayer",
-  "esri/Map"
-], (
-  SpatialReference,
-  GeoJSONLayer,
-  Map
-) => {
-
+  "esri/Map",
+], (SpatialReference, GeoJSONLayer, Map) => {
   // Insert the above code here.
 });
 ```
