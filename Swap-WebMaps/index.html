@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <title>Swap web maps in the same view</title>
+
+    <!-- Load Map components from CDN-->
+    <script
+      type="module"
+      src="https://js.arcgis.com/map-components/4.32/arcgis-map-components.esm.js"
+    ></script>
+
+    <!-- Load the ArcGIS Maps SDK for JavaScript from CDN -->
+    <link
+      rel="stylesheet"
+      href="https://js.arcgis.com/4.32/esri/themes/light/main.css"
+    />
+    <script src="https://js.arcgis.com/4.32/"></script>
+
+    <!-- Load the CSS file -->
+    <link rel="stylesheet" href="./src/style.css" />
+  </head>
+
+  <body>
+    <section class="header esri-widget">
+      <div class="btns">
+        <div class="btn-switch active-map" data-id="0">Missing Migrants</div>
+        <div class="btn-switch" data-id="1">Refugee Routes</div>
+        <div class="btn-switch" data-id="2">2015 European Sea Arrivals</div>
+      </div>
+    </section>
+    <div id="viewDiv" class="esri-widget"></div>
+    <script type="module" src="./src/swapWebMaps.js"></script>
+  </body>
+</html>

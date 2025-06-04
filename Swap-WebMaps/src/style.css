@@ -1,0 +1,49 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+#viewDiv {
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 60px;
+  bottom: 0;
+}
+
+.header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 10%;
+}
+
+.btns {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+}
+
+.btn-switch {
+  flex-grow: 4;
+  background-color: rgba(34, 111, 14, 0.5);
+  color: #fff;
+  margin: 1px;
+  width: 50%;
+  padding: 20px;
+  overflow: auto;
+  text-align: center;
+  cursor: pointer;
+}
+
+.active-map {
+  color: #fff;
+  background-color: rgba(34, 111, 14, 1);
+}
