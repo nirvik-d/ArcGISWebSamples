@@ -58,6 +58,8 @@ body {
 ```
 
 ## Step 4: Configure the Dot Density Renderer in `src/dotDensity.js`
+
+Create a dot density renderer for population visualization
 ```javascript
 require(["esri/layers/FeatureLayer", "esri/renderers/DotDensityRenderer"], (FeatureLayer, DotDensityRenderer) => {
     const dotDensityRenderer = new DotDensityRenderer({
