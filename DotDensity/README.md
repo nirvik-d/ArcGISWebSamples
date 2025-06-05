@@ -26,9 +26,7 @@ Install dependencies:
 npm install
 ```
 
-## Step 2: Create the HTML Structure
-
-Create `index.html`:
+## Step 2: Update the HTML in `index.html`
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -48,9 +46,7 @@ Create `index.html`:
 </html>
 ```
 
-## Step 3: Create the CSS
-
-Create `src/style.css`:
+## Step 3: Update the CSS in `src/style.css`
 ```css
 arcgis-map {
     width: 100vw;
@@ -58,9 +54,7 @@ arcgis-map {
 }
 ```
 
-## Step 4: Configure the Dot Density Renderer
-
-In `src/dotDensity.js`, create the dot density renderer:
+## Step 4: Configure the Dot Density Renderer in `src/dotDensity.js`
 ```javascript
 require(["esri/layers/FeatureLayer", "esri/renderers/DotDensityRenderer"], (FeatureLayer, DotDensityRenderer) => {
     const dotDensityRenderer = new DotDensityRenderer({
@@ -116,7 +110,7 @@ require(["esri/layers/FeatureLayer", "esri/renderers/DotDensityRenderer"], (Feat
 });
 ```
 
-## Step 5: Create the Feature Layer
+## Step 5: Create the Feature Layer in `src/dotDensity.js` 
 
 Add the ACS population data layer:
 ```javascript
@@ -179,7 +173,7 @@ const layer = new FeatureLayer({
 });
 ```
 
-## Step 6: Configure the Map
+## Step 6: Configure the Map in `src/dotDensity.js`
 
 Set up the map with constraints and popup:
 ```javascript
@@ -203,7 +197,7 @@ arcgisMap.highlights = [{
 }];
 ```
 
-## Step 7: Initialize the Map
+## Step 7: Initialize the Map in `src/dotDensity.js`
 
 Add the layer to the map when it's ready:
 ```javascript
