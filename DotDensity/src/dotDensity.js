@@ -164,6 +164,7 @@ require(["esri/layers/FeatureLayer", "esri/renderers/DotDensityRenderer"], (
       ],
     },
     renderer: dotDensityRenderer,
+    definitionExpression: "state = 'California' AND county IN ('Los Angeles County', 'San Diego County', 'Orange County', 'Santa Barbara County', 'Ventura County', 'San Luis Obispo County')",
   });
 
   // Configure the ArcGIS map component
