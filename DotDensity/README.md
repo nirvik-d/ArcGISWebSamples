@@ -48,9 +48,12 @@ npm install
 
 ## Step 3: Update the CSS in `src/style.css`
 ```css
-arcgis-map {
-    width: 100vw;
-    height: 100vh;
+html,
+body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
 }
 ```
 
