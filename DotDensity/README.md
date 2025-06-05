@@ -8,16 +8,22 @@ This tutorial will guide you through creating a dot density map visualization us
 - ArcGIS API for JavaScript
 - Modern web browser
 
-## Step 1: Set Up the Project Structure
+## Step 1: Set up the Vite project
 
-Create the following directory structure:
+```bash
+npm create vite@latest
 ```
-DotDensity/
-├── index.html
-├── src/
-│   ├── dotDensity.js
-│   └── style.css
-└── README.md
+
+Follow the prompts to create a new project.
+
+Navigate to the project directory:
+```bash
+cd <project-name>
+```
+
+Install dependencies:
+```bash
+npm install
 ```
 
 ## Step 2: Create the HTML Structure
