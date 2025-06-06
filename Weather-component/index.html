@@ -1,13 +1,57 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <title>Weather component</title>
+
+    <!-- Load Calcite components from CDN -->
+    <script
+      type="module"
+      src="https://js.arcgis.com/calcite-components/3.0.3/calcite.esm.js"
+    ></script>
+
+    <!-- Load the ArcGIS Maps SDK for JavaScript -->
+    <link
+      rel="stylesheet"
+      href="https://js.arcgis.com/4.32/esri/themes/light/main.css"
+    />
+    <script src="https://js.arcgis.com/4.32/"></script>
+
+    <!-- Load Map components from CDN-->
+    <script
+      type="module"
+      src="https://js.arcgis.com/map-components/4.32/arcgis-map-components.esm.js"
+    ></script>
+
+    <link rel="stylesheet" href="./src/style.css" />
   </head>
+
   <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
+    <arcgis-scene item-id="c56dab9e4d1a4b0c9d1ee7f589343516">
+      <arcgis-zoom position="top-left"></arcgis-zoom>
+      <arcgis-navigation-toggle position="top-left"></arcgis-navigation-toggle>
+      <arcgis-compass position="top-left"> </arcgis-compass>
+      <arcgis-expand position="top-right" group="top-right" expanded>
+        <arcgis-weather> </arcgis-weather>
+      </arcgis-expand>
+      <arcgis-expand position="top-right" group="top-right">
+        <arcgis-daylight> </arcgis-daylight>
+      </arcgis-expand>
+    </arcgis-scene>
+
+    <calcite-segmented-control id="floodSelection" width="full">
+      <calcite-segmented-control-item value="noFlooding" checked=""
+        >No flooding</calcite-segmented-control-item
+      >
+      <calcite-segmented-control-item value="flooding"
+        >Flooding</calcite-segmented-control-item
+      >
+    </calcite-segmented-control>
+
+    <script type="module" src="./src/main.js"></script>
   </body>
 </html>

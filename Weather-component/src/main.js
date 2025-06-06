@@ -1,24 +1,41 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+const scene = document.querySelector("arcgis-scene");
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
+// Wait for the scene to be ready
+scene.addEventListener("arcgisViewReadyChange", () => {
+  scene.environment.weather = {
+    type: "cloudy",
+    cloudCover: 0.3,
+  };
 
-setupCounter(document.querySelector('#counter'))
+  // Get if the flood selection is changed
+  const floodSelection = document.getElementById("floodSelection");
+
+  // Get the Flood layer
+  let floodLevelLayer = scene.map.allLayers.find(
+    (layer) => layer.title === "Flood Level"
+  );
+
+  // Add event listener to the flood selection
+  floodSelection.addEventListener("calciteSegmentedControlChange", () => {
+    switch (floodSelection.selectedItem.value) {
+      // If no flooding is selected
+      case "noFlooding":
+        scene.environment.weather = {
+          type: "cloudy",
+          cloudCover: 0.3,
+        };
+        floodLevelLayer.visible = false;
+        break;
+
+      // If flooding is selected
+      case "flooding":
+        scene.environment.weather = {
+          type: "rainy",
+          cloudCover: 0.7,
+          precipitation: 0.3,
+        };
+        floodLevelLayer.visible = true;
+        break;
+    }
+  });
+});
