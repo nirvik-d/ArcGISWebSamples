@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+
+    <title>Dot density | Sample | ArcGIS Maps SDK for JavaScript 4.32</title>
+
+    <!-- Load Calcite components from CDN -->
+    <script
+      type="module"
+      src="https://js.arcgis.com/calcite-components/3.0.3/calcite.esm.js"
+    ></script>
+
+    <!-- Load the ArcGIS Maps SDK for JavaScript from CDN -->
+    <link
+      rel="stylesheet"
+      href="https://js.arcgis.com/4.32/esri/themes/dark/main.css"
+    />
+    <script src="https://js.arcgis.com/4.32/"></script>
+
+    <!-- Load Map components from CDN-->
+    <script
+      type="module"
+      src="https://js.arcgis.com/map-components/4.32/arcgis-map-components.esm.js"
+    ></script>
+
+    <!-- Load the main.js file -->
+    <link rel="stylesheet" href="./src/style.css">
+  </head>
+  <body>
+    <arcgis-map item-id="56b5bd522c52409c90d902285732e9f1">
+      <arcgis-zoom position="top-left"></arcgis-zoom>
+      <arcgis-expand position="top-left" group="top-left">
+        <arcgis-legend></arcgis-legend>
+      </arcgis-expand>
+      <arcgis-expand position="top-left" group="top-left">
+        <arcgis-bookmarks></arcgis-bookmarks>
+      </arcgis-expand>
+    </arcgis-map>
+
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
