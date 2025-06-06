@@ -149,7 +149,7 @@ scene.addEventListener("arcgisViewReadyChange", () => {
 });
 ```
 
-5. **Running the Application**
+## Running the Application
 
 1. **Development Server**
    ```bash
@@ -168,11 +168,3 @@ scene.addEventListener("arcgisViewReadyChange", () => {
    npm run preview
    ```
    This will serve the production build locally
-
-## Usage
-
-1. Open the application in your web browser
-2. Use the navigation controls to explore the map
-3. Toggle the weather widget using the expand button
-4. Use the daylight toggle to switch between day and night views
-5. Select flood scenarios using the segmented control
