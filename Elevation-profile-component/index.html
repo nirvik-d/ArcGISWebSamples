@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>Elevation Profile component</title>
+
+  <!-- Load Calcite components from CDN -->
+  <script type="module" src="https://js.arcgis.com/calcite-components/3.0.3/calcite.esm.js"></script>
+
+  <!-- Load the ArcGIS Maps SDK for JavaScript from CDN -->
+  <link rel="stylesheet" href="https://js.arcgis.com/4.32/esri/themes/light/main.css" />
+  <script src="https://js.arcgis.com/4.32/"></script>
+
+  <!-- Load Map components from CDN-->
+  <script
+    type="module"
+    src="https://js.arcgis.com/map-components/4.32/arcgis-map-components.esm.js"
+  ></script>
+
+  <!-- Load custom styles -->
+  <link rel="stylesheet" href="./src/style.css" />
+</head>
+
+<body>
+  <arcgis-scene item-id="9a542f6755274436985617a462ffdf44" camera-position="-74.006438, 40.6934417, 686"
+    camera-tilt="66" camera-heading="353">
+    <arcgis-zoom position="top-left"></arcgis-zoom>
+    <arcgis-navigation-toggle position="top-left"></arcgis-navigation-toggle>
+    <arcgis-compass position="top-left"> </arcgis-compass>
+    <arcgis-elevation-profile position="top-right">
+    </arcgis-elevation-profile>
+  </arcgis-scene>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>

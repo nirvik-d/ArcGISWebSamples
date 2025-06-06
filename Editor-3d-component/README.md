@@ -4,8 +4,6 @@ A web application demonstrating 3D feature editing using ArcGIS Maps SDK for Jav
 
 ## Prerequisites
 
-- Modern web browser (Chrome, Firefox, Safari, or Edge)
-- Internet connection for loading ArcGIS services and 3D models
 - ArcGIS Maps SDK v4.32
 - ArcGIS Map Components v4.32
 
@@ -20,7 +18,7 @@ A web application demonstrating 3D feature editing using ArcGIS Maps SDK for Jav
 
 2. **HTML Structure (index.html)**
 
-The HTML file sets up the basic structure of the application:
+Edit the index.html file to include the following code:
 
 ```html
 <!DOCTYPE html>
@@ -61,7 +59,7 @@ This structure:
 
 2. **CSS Styling (src/style.css)**
 
-The CSS file provides essential styling for the application:
+Edit the style.css file to include the following code:
 
 ```css
 /* Full viewport coverage */
@@ -83,7 +81,7 @@ This styling:
 
 3. **JavaScript Implementation (src/main.js)**
 
-The main JavaScript file handles all the interactive functionality:
+Edit the main.js file to include the following code:
 
 ```javascript
 // Initialize required ArcGIS modules
