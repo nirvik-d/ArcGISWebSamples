@@ -60,10 +60,6 @@ This repository contains various web mapping examples that demonstrate different
 
 To run any of these samples, you'll need:
 
-- Basic knowledge of JavaScript
-- Understanding of HTML and CSS
-- Access to a web browser
-- A text editor or IDE
 - Node.js installed on your system
 
 ## Getting Started
