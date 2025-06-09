@@ -8,35 +8,53 @@ This repository contains various web mapping examples that demonstrate different
 
 ## Available Samples
 
-### 1. Load-WebMap
-- Basic example of loading and displaying a WebMap
-- Demonstrates core ArcGIS Maps SDK functionality
-- Includes setup instructions and prerequisites
+### 1. Animate-layer-view-effect
+- Visualizes 2008 election results with interactive animations
+- Demonstrates feature effects and layer view animations
+- Includes hover tooltips with dynamic bar charts
+- Shows how to implement smooth animations using requestAnimationFrame
 
-### 2. Base-Gallery-Component
+### 2. Clustering
+- Implements advanced clustering of power plant locations
+- Shows capacity-based clustering and labeling
+- Demonstrates size-based visualization using feature layer renderer
+- Includes interactive slider for capacity filtering
+- Features smart capacity formatting (k, M units)
+
+### 3. Basemap-gallery-component
 - Implements a basemap gallery interface
 - Allows users to switch between different basemap styles
 - Shows how to create reusable components
 
-### 3. Basemaps-With-Different-Projections
+### 4. Basemaps-and-projections
 - Demonstrates working with various map projections
 - Shows how to handle different coordinate systems
 - Includes multiple basemap examples
 
-### 4. Edit-Features-With-Editor
+### 5. Editor-component
 - Implements feature editing capabilities
 - Shows how to use the ArcGIS Editor widget
 - Demonstrates feature layer management
 
-### 5. Elevation-Profile-Component
+### 6. Editor-3d-component
+- Implements 3D feature editing capabilities
+- Shows how to use the ArcGIS 3D Editor widget
+- Demonstrates 3D feature layer management
+
+### 7. Elevation-profile-component
 - Creates elevation profile visualizations
 - Shows terrain analysis capabilities
 - Implements interactive elevation profiles
 
-### 6. Terrain-Analysis
-- Demonstrates advanced terrain analysis features
-- Shows how to work with elevation data
-- Implements 3D visualization techniques
+### 8. Weather-component
+- Implements weather data visualization
+- Shows how to work with weather layers
+- Demonstrates interactive weather data display
+
+### 9. Dot-density
+- Implements dot density visualization
+- Shows how to create dot density maps
+- Demonstrates statistical visualization techniques
 
 ## Prerequisites
 
