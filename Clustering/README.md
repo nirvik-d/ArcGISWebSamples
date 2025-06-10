@@ -560,6 +560,19 @@ slider.on(["thumb-change", "thumb-drag"], (event) => {
 });
 ```
 
+8. Wrap the above code with the required require statement.
+
+```javascript
+require([
+  "esri/Map",
+  "esri/views/MapView",
+  "esri/layers/FeatureLayer",
+  "esri/widgets/Slider",
+  "esri/widgets/Expand"
+], (Map, MapView, FeatureLayer, Slider, Expand) => {
+});
+```
+
 ## Running the Application
 
 1. **Development Server**

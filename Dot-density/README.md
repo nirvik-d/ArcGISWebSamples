@@ -49,13 +49,10 @@ A web application demonstrating population distribution using dot density visual
 
 **JavaScript Implementation (src/main.js)**
 
+1. Create a dot density renderer with demographic attributes.
+
 ```javascript
-// Initialize required ArcGIS modules
-require([
-  "esri/layers/FeatureLayer",
-  "esri/renderers/DotDensityRenderer"
-], (FeatureLayer, DotDensityRenderer) => {
-  // Create dot density renderer with demographic attributes
+// Create dot density renderer with demographic attributes
   const dotDensityRenderer = new DotDensityRenderer({
     dotValue: 100, // Each dot represents 100 people
     outline: null,
@@ -82,29 +79,41 @@ require([
       // ... additional demographic groups
     ]
   });
+```
 
-  // Create feature layer with ACS population data
-  const layer = new FeatureLayer({
-    url: "https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/ACS_Population_by_Race_and_Hispanic_Origin_Boundaries/FeatureServer/2",
-    minScale: 20000000,
-    renderer: dotDensityRenderer
-  });
+2. Create a feature layer with ACS population data.
 
-  // Configure map with popup and constraints
-  const arcgisMap = document.querySelector("arcgis-map");
-  arcgisMap.constraints = {
-    maxScale: 35000
-  };
+```javascript
+// Create feature layer with ACS population data
+const layer = new FeatureLayer({
+  url: "https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/ACS_Population_by_Race_and_Hispanic_Origin_Boundaries/FeatureServer/2",
+  minScale: 20000000,
+  renderer: dotDensityRenderer
+});
+```
 
-  arcgisMap.popup = {
-    dockEnabled: true,
-    dockOptions: {
-      position: "top-right",
-      breakpoint: false
-    }
-  };
+3. Setup the map and a popup
 
-  // Set up map initialization
+```javascript
+// Configure map with popup and constraints
+const arcgisMap = document.querySelector("arcgis-map");
+arcgisMap.constraints = {
+  maxScale: 35000
+};
+
+arcgisMap.popup = {
+  dockEnabled: true,
+  dockOptions: {
+    position: "top-right",
+    breakpoint: false
+  }
+};
+```
+
+4. Check if the map is ready and add the layer to it.
+
+```javascript
+// Set up map initialization
   async function handleMapReady() {
     arcgisMap.map.add(layer);
   }
@@ -114,6 +123,15 @@ require([
   } else {
     handleMapReady();
   }
+```
+
+5. Initialize required ArcGIS modules and put the above code inside it.
+
+```javascript
+require([
+  "esri/layers/FeatureLayer",
+  "esri/renderers/DotDensityRenderer"
+], (FeatureLayer, DotDensityRenderer) => {
 });
 ```
 

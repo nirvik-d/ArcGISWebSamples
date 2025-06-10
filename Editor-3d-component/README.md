@@ -9,14 +9,14 @@ A web application demonstrating 3D feature editing using ArcGIS Maps SDK for Jav
 
 ## Detailed Implementation Guide
 
-1. **Initialize the Project**
+**Initialize the Project**
    ```bash
    # Create a new Vite project
    npm create vite@latest
    ```
    Follow the instructions on screen to initialize the project. This step sets up a new Vite project, which is a modern web development build tool that provides a fast and efficient way to build web applications.
 
-2. **HTML Structure (index.html)**
+**HTML Structure (index.html)**
 
 Edit the index.html file to include the following code:
 
@@ -57,7 +57,7 @@ This structure:
 - Creates a container for the scene
 - Initializes the main application logic
 
-2. **CSS Styling (src/style.css)**
+**CSS Styling (src/style.css)**
 
 Edit the style.css file to include the following code:
 
@@ -79,18 +79,14 @@ This styling:
 - Makes the scene fill the entire viewport
 - Creates a responsive layout
 
-3. **JavaScript Implementation (src/main.js)**
+**JavaScript Implementation (src/main.js)**
 
 Edit the main.js file to include the following code:
 
+1. Create a recreation layer configuration
+
 ```javascript
-// Initialize required ArcGIS modules
-require(["esri/layers/FeatureLayer", "esri/widgets/Editor"], function (
-  FeatureLayer,
-  Editor
-) {
-  // Create recreation layer configuration
-  // This layer manages 3D recreation features with elevation support
+// This layer manages 3D recreation features with elevation support
   const recLayer = new FeatureLayer({
     title: "Recreation",
     url: "https://services.arcgis.com/V6ZHFr6zdgNZuVG0/arcgis/rest/services/EditableFeatures3D/FeatureServer/1",
@@ -156,9 +152,12 @@ require(["esri/layers/FeatureLayer", "esri/widgets/Editor"], function (
       ]
     }
   });
+```
 
-  // Initialize scene and add layer
-  const scene = document.querySelector("arcgis-scene");
+2. Initialize the scene, add the layer, and configure the editor widget.
+
+```javascript
+ const scene = document.querySelector("arcgis-scene");
   scene.addEventListener("arcgisViewReadyChange", () => {
     if (scene.ready) {
       // Add the recreation layer to the scene
@@ -186,6 +185,15 @@ require(["esri/layers/FeatureLayer", "esri/widgets/Editor"], function (
       });
     }
   });
+```
+
+3. Initialize required ArcGIS modules and add the above code inside the require function.
+
+```javascript
+require(["esri/layers/FeatureLayer", "esri/widgets/Editor"], function (
+  FeatureLayer,
+  Editor
+) { 
 });
 ```
 
