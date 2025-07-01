@@ -1,6 +1,24 @@
 # ArcGIS Imagery Tile Layer
 
-A web application demonstrating the Imagery Tile Layer with Raster Shaded Relief rendering using ArcGIS Maps SDK for JavaScript.
+A web application demonstrating the Imagery Tile Layer with Raster Shaded Relief rendering using ArcGIS Maps SDK for JavaScript. This component provides advanced imagery visualization with customizable shaded relief effects.
+
+## Features
+
+- **Imagery Visualization**: High-performance tile-based imagery display
+- **Shaded Relief**: Advanced raster-based shaded relief rendering
+- **Customizable Parameters**: Configurable hillshade types and color ramps
+- **Interactive Controls**: Real-time parameter adjustments
+- **Modern UI**: Calcite components for enhanced user experience
+- **Performance Optimized**: Efficient rendering of large imagery datasets
+
+## Screenshots
+
+*Imagery visualization with shaded relief effects*
+
+## Prerequisites
+
+- NodeJS
+- Vite
 
 ## Detailed Implementation Guide
 
@@ -64,15 +82,13 @@ The HTML file sets up the basic structure for the ArcGIS web application:
           <calcite-label> Sun Azimuth:
             <calcite-slider id="azimuthSlider" value="315" label-handles max="360" min="0"></calcite-slider>
           </calcite-label>
-          <calcite-block open>
-          <calcite-label layout="inline">
-              <calcite-checkbox id="tinted" checked></calcite-checkbox>
-              Tinted hillshade
+          <calcite-label> Tinted Hillshade:
+            <calcite-checkbox id="tinted" checked></calcite-checkbox>
           </calcite-label>
-           <calcite-label layout="inline">
-              <calcite-checkbox id="adjust" checked></calcite-checkbox>
-              Adjust for large scale
+          <calcite-label> Adjust for Large Scale:
+            <calcite-checkbox id="adjust" checked></calcite-checkbox>
           </calcite-label>
+        </calcite-block>
       </calcite-shell-panel>
     </calcite-shell>
     <script type="module" src="./src/main.js"></script>
@@ -260,14 +276,42 @@ require([
 ## Running the Application
 
 1. **Development Server**
-
    ```bash
    npm run dev
    ```
-
    This will start the development server at `http://localhost:5173`
 
 2. **Build for Production**
    ```bash
    npm run build
    ```
+   This will create a production-ready build in the `dist` directory
+
+3. **Preview Production Build**
+   ```bash
+   npm run preview
+   ```
+
+## Usage
+
+1. **View Imagery**
+   - Open the application to see the imagery visualization
+   - The shaded relief effect enhances terrain visualization
+   - Use standard map controls to navigate
+
+2. **Adjust Shaded Relief**
+   - Use the "Shaded Relief Parameters" panel to customize:
+     - Hillshade type: traditional or multi-directional
+     - Color ramp selection
+   - Changes are applied in real-time
+
+3. **Explore Imagery**
+   - Use standard map navigation controls:
+     - Zoom in/out to see different levels of detail
+     - Pan to view different areas
+     - Rotate to examine terrain from different angles
+
+4. **Use Controls**
+   - The Calcite shell provides floating panel controls
+   - Parameters can be adjusted while viewing the map
+   - Changes are immediately reflected in the visualization
