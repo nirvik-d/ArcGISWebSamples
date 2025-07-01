@@ -2,6 +2,19 @@
 
 A web application demonstrating elevation profile visualization using ArcGIS Maps SDK for JavaScript. This component allows users to visualize terrain elevation along a path in a 3D scene, showing both ground elevation and building profiles.
 
+## Features
+
+- **Elevation Visualization**: Displays terrain elevation profiles in real-time
+- **3D Scene Integration**: Combines 3D visualization with elevation data
+- **Path Analysis**: Shows elevation along user-defined paths
+- **Building Profiles**: Includes building elevation data in profiles
+- **Interactive Controls**: Modern UI with navigation and zoom controls
+- **Customizable Views**: Configurable camera positions and angles
+
+## Screenshots
+
+*Elevation profile visualization in a 3D scene*
+
 ## Prerequisites
 
 - ArcGIS Maps SDK v4.32
@@ -130,3 +143,25 @@ This implementation:
    npm run preview
    ```
    This will serve the production build locally
+
+## Usage
+
+1. **View the Scene**
+   - Open the application to see the 3D scene initialized
+   - The scene displays both terrain and building features
+   - Use the elevation profile widget to visualize paths
+
+2. **Explore the Scene**
+   - Use navigation controls (top-left) to move around
+   - Zoom in/out to see different elevation details
+   - Rotate the view to examine elevation from different angles
+
+3. **Create Elevation Profiles**
+   - Use the elevation profile tool to draw paths
+   - View real-time elevation data along the path
+   - See both ground and building elevation profiles
+
+4. **Use Navigation Tools**
+   - Zoom: Use the zoom control in top-left
+   - Compass: Use the compass to orient the view
+   - Navigation Toggle: Switch between different navigation modes
