@@ -1,6 +1,19 @@
 # ArcGIS Weather Component
 
-A web application demonstrating an interactive weather component using ArcGIS Maps SDK for JavaScript.
+A web application demonstrating an interactive weather component using ArcGIS Maps SDK for JavaScript. This component provides real-time weather visualization and interactive controls.
+
+## Features
+
+- **Real-time Weather**: Displays current weather conditions
+- **Interactive Controls**: Modern UI with expandable weather panel
+- **3D Visualization**: Weather data displayed in a 3D scene
+- **Navigation Tools**: Complete set of navigation controls
+- **Calcite Integration**: Uses Calcite components for enhanced UI
+- **Modern UI**: Clean and intuitive user interface
+
+## Screenshots
+
+*Interactive weather visualization in a 3D scene*
 
 ## Prerequisites
 
@@ -147,7 +160,6 @@ scene.addEventListener("arcgisViewReadyChange", () => {
     }
   });
 });
-```
 
 ## Running the Application
 
@@ -167,4 +179,27 @@ scene.addEventListener("arcgisViewReadyChange", () => {
    ```bash
    npm run preview
    ```
-   This will serve the production build locally
+
+## Usage
+
+1. **View Weather Data**
+   - Open the application to see the 3D scene with weather data
+   - The weather component is expandable from the top-right corner
+   - Current weather conditions are displayed in real-time
+
+2. **Use Weather Controls**
+   - Expand the weather panel to access detailed weather information
+   - Interact with weather data directly in the 3D scene
+   - Use the weather widget's built-in controls
+
+3. **Navigate the Scene**
+   - Use standard 3D navigation controls:
+     - Zoom in/out with the zoom control (top-left)
+     - Pan and rotate the view
+     - Use the compass to orient yourself
+
+4. **Use Navigation Tools**
+   - Zoom: Use the zoom control in top-left
+   - Navigation Toggle: Switch between navigation modes
+   - Compass: Use the compass to orient the view
+   - Expandable Weather Panel: Access detailed weather information
