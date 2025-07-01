@@ -14,9 +14,9 @@ A web application demonstrating animated visualization of election results using
 
 ## Screenshots
 
-*Caption: Main application view showing the animated map and UI controls.*
+<img width="959" alt="image" src="https://github.com/user-attachments/assets/0053a32e-5aff-4cd3-81db-126c6480fd33" />
 
-<img width="959" alt="image" src="https://github.com/user-attachments/assets/a53343cd-43de-40df-be79-cd018e6792bf" />
+*Main application view showing the animated map and UI controls.*
 
 ## Project Setup
 
@@ -411,8 +411,8 @@ A web application demonstrating animated visualization of election results using
             symbol: {
               type: "simple-marker",
               size: 9,
-              color: "rgb(158, 85, 156)",
-              outline: null,
+            color: "rgb(158, 85, 156)",
+            outline: null,
             },
           },
         ],
@@ -945,6 +945,10 @@ A web application demonstrating animated visualization of election results using
     npm run build
     ```
 
-## Data Source
+## Usage
 
-The election results data (2008 Obama / McCain election) is sourced from an ArcGIS Online [Portal Item](https://www.arcgis.com/home/item.html?id=359bc19d9bbb4f2ba1b2baec7e13e757). This dataset typically originates from Esri's Living Atlas or official election data releases.
+* **Slider:** Use the slider at the bottom to filter precincts based on the percentage gap between Obama and McCain votes. Dragging the slider will dynamically update the map's visualization.
+* **Play/Pause Button:** Click the "Play" button next to the slider to start an automatic animation that cycles through different gap percentages. Click "Pause" to stop the animation.
+* **Hover Tooltip:** Hover your mouse over any precinct on the map to see a detailed tooltip showing the exact vote counts for Obama and McCain, as well as the calculated gap percentage for that specific precinct.
+* **Click-to-Animate:** Click on any precinct on the map to automatically animate the slider to that precinct's specific gap percentage.
+* **Map Navigation:** Use the standard map widgets (Legend, Home, Fullscreen) in the top-left and top-right corners for basic map interaction and information.
