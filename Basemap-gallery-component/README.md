@@ -19,6 +19,11 @@ A web application demonstrating an interactive basemap gallery using ArcGIS Maps
 
 *3D Scene with street base map*
 
+## Prerequisites
+
+* NodeJS
+* Vite
+
 ## Project Setup
 
 1.  **Initialize the Project**
