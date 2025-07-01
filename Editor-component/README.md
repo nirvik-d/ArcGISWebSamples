@@ -149,24 +149,3 @@ require([
    ```bash
    npm run preview
    ```
-
-## Usage
-
-1. **View the Map**
-   - Open the application to see the 2D map initialized
-   - The map displays 2D features with proper styling
-
-2. **Edit Features**
-   - Use the Editor widget in the top-right corner to interact with features
-   - Real-time updates as you modify features
-   - Visual feedback during editing operations
-
-3. **Explore Features**
-   - Different feature types are styled with unique symbols
-   - Size variations are visible
-   - Tooltips provide additional information about features
-
-4. **Map Navigation**
-   - Use standard 2D navigation controls to explore the map
-   - Zoom in/out to see different levels of detail
-   - Pan the map to view different areas
