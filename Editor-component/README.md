@@ -13,7 +13,9 @@ A web application demonstrating 2D feature editing using ArcGIS Maps SDK for Jav
 
 ## Screenshots
 
-*2D feature editing interface*
+<img width="959" alt="image" src="https://github.com/user-attachments/assets/84cc84db-aeb6-47b1-bf6c-64d4b7699c65" />
+
+*2D Map view with the editor component*
 
 ## Prerequisites
 
