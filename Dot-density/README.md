@@ -10,6 +10,17 @@ A web application demonstrating population distribution using dot density visual
 - **ArcGIS Integration**: Built using ArcGIS Maps SDK for JavaScript
 - **Modern UI**: Clean and intuitive user interface
 
+## Screenshots
+
+<img width="959" alt="image" src="https://github.com/user-attachments/assets/6bb2d67f-5e39-45cf-b818-96c08de1f40f" />
+
+*Map showing the different current population estimates*
+
+## Pre-requisites
+
+-NodeJS
+-Vite
+
 ## Project Setup
 
 **Initialize Project**
