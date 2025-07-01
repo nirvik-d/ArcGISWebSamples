@@ -13,7 +13,9 @@ A web application demonstrating 3D feature editing using ArcGIS Maps SDK for Jav
 
 ## Screenshots
 
+<img width="959" alt="image" src="https://github.com/user-attachments/assets/e45d85e5-8f62-48fe-a1f0-00764816ea74" />
 
+*3D Scene view with a 3D editor component*
 
 ## Prerequisites
 
@@ -23,11 +25,11 @@ A web application demonstrating 3D feature editing using ArcGIS Maps SDK for Jav
 ## Detailed Implementation Guide
 
 **Initialize the Project**
-   ```bash
-   # Create a new Vite project
-   npm create vite@latest
-   ```
-   Follow the instructions on screen to initialize the project. This step sets up a new Vite project, which is a modern web development build tool that provides a fast and efficient way to build web applications.
+```bash
+# Create a new Vite project
+npm create vite@latest
+```
+Follow the instructions on screen to initialize the project. This step sets up a new Vite project, which is a modern web development build tool that provides a fast and efficient way to build web applications.
 
 **HTML Structure (index.html)**
 
