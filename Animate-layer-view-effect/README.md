@@ -18,6 +18,11 @@ A web application demonstrating animated visualization of election results using
 
 *Main application view showing the animated map and UI controls.*
 
+## Prerequisites
+
+* NodeJS
+* Vite
+
 ## Project Setup
 
 1.  **Initialize Project**
