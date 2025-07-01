@@ -13,7 +13,9 @@ A web application demonstrating elevation profile visualization using ArcGIS Map
 
 ## Screenshots
 
-*Elevation profile visualization in a 3D scene*
+<img width="959" alt="image" src="https://github.com/user-attachments/assets/0fe60959-4e4e-4f40-96df-8fc238cdf414" />
+
+*Elevation profile visualization in a 3D scene using the Elevation profile widget*
 
 ## Prerequisites
 
