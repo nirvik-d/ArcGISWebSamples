@@ -2,6 +2,14 @@
 
 This sample demonstrates how to implement clustering in an ArcGIS Maps SDK for JavaScript application, showing renewable energy facilities with capacity-based clustering and labeling.
 
+## Features
+
+- **Capacity-based Clustering**: Automatically groups nearby renewable energy facilities based on their capacity
+- **Interactive Capacity Filter**: Real-time filtering of power plants based on minimum capacity threshold
+- **Dynamic Labeling**: Capacity-based labels for both individual facilities and clusters
+- **Customizable UI**: Dark theme styling with intuitive controls
+- **Responsive Design**: Optimized for both desktop and mobile viewing
+
 ## Project Setup
 
 1. **Initialize Project**
@@ -587,3 +595,23 @@ require([
    ```bash
    npm run build
    ```
+
+## Usage
+
+1. **View the Map**
+   - Open the application to see the map displaying renewable energy facilities
+   - The map automatically clusters nearby facilities based on their capacity
+
+2. **Filter by Capacity**
+   - Use the slider control to set a minimum capacity threshold
+   - Only facilities meeting or exceeding this capacity will be displayed
+   - The slider value updates in real-time as you adjust it
+
+3. **Explore Clusters**
+   - Click on clusters to view detailed information about the grouped facilities
+   - Each cluster displays the total capacity of all facilities within it
+   - Individual facilities show their specific capacity when not clustered
+
+4. **Use the Legend**
+   - Refer to the legend to understand the capacity ranges represented by different symbol sizes
+   - The legend helps interpret the visualization of facility capacities
