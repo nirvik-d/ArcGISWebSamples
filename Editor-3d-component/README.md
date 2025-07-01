@@ -2,10 +2,23 @@
 
 A web application demonstrating 3D feature editing using ArcGIS Maps SDK for JavaScript.
 
+## Features
+
+- **3D Feature Management**: Supports 3D recreation features with elevation support
+- **Interactive Editing**: Real-time editing through ArcGIS Editor widget
+- **Visual Styling**: Unique value renderer for different feature types
+- **Dynamic Sizing**: Size and rotation visual variables for 3D features
+- **User Interface**: Tooltips and labels for better user experience
+- **Scene Management**: Proper initialization and layer management
+
+## Screenshots
+
+
+
 ## Prerequisites
 
-- ArcGIS Maps SDK v4.32
-- ArcGIS Map Components v4.32
+- NodeJS
+- Vite
 
 ## Detailed Implementation Guide
 
@@ -197,14 +210,6 @@ require(["esri/layers/FeatureLayer", "esri/widgets/Editor"], function (
 });
 ```
 
-This implementation:
-- Manages 3D recreation features with elevation support
-- Uses unique value renderer for different feature types
-- Implements size and rotation visual variables
-- Provides interactive editing through the Editor widget
-- Configures tooltips and labels for better user experience
-- Handles scene initialization and layer management
-
 ## Running the Application
 
 1. **Development Server**
@@ -223,4 +228,24 @@ This implementation:
    ```bash
    npm run preview
    ```
-   This will serve the production build locally
+
+## Usage
+
+1. **View the Scene**
+   - Open the application to see the 3D scene initialized
+   - The scene displays 3D features with proper elevation
+
+2. **Edit Features**
+   - Use the Editor widget to interact with 3D features
+   - Real-time updates as you modify features
+   - Visual feedback during editing operations
+
+3. **Explore Features**
+   - Different feature types are styled with unique colors
+   - Size and rotation variations are visible
+   - Tooltips provide additional information about features
+
+4. **Scene Navigation**
+   - Use standard 3D navigation controls to explore the scene
+   - Zoom in/out to see different levels of detail
+   - Rotate the view to examine features from different angles
