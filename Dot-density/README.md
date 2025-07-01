@@ -2,6 +2,14 @@
 
 A web application demonstrating population distribution using dot density visualization with ArcGIS Maps SDK for JavaScript.
 
+## Features
+
+- **Dot Density Visualization**: Visualizes data points using dot density rendering
+- **Customizable Colors**: Configurable colors for different categories of data
+- **Interactive Map**: Real-time updates and responsive interactions
+- **ArcGIS Integration**: Built using ArcGIS Maps SDK for JavaScript
+- **Modern UI**: Clean and intuitive user interface
+
 ## Project Setup
 
 **Initialize Project**
@@ -147,3 +155,19 @@ require([
    ```bash
    npm run build
    ```
+
+## Usage
+
+1. **View the Map**
+   - Open the application to see the map displaying dot density visualization
+   - Each dot represents a data point in the visualization
+
+2. **Explore Data**
+   - Zoom in and out to explore different density levels
+   - Pan the map to view different areas
+   - Each dot represents a specific data point
+
+3. **Customize Colors**
+   - Refer to the legend to understand the color scheme
+   - Colors represent different categories of data points
+   - The color scheme helps distinguish between different data categories
