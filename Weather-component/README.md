@@ -13,6 +13,8 @@ A web application demonstrating an interactive weather component using ArcGIS Ma
 
 ## Screenshots
 
+<img width="959" alt="image" src="https://github.com/user-attachments/assets/4d23666a-8a00-4094-bb3f-7a9bda81acf7" />
+
 *Interactive weather visualization in a 3D scene*
 
 ## Prerequisites
