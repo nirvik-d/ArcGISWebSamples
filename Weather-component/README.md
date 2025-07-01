@@ -17,9 +17,8 @@ A web application demonstrating an interactive weather component using ArcGIS Ma
 
 ## Prerequisites
 
-- Node.js (v18 or higher recommended)
-- npm (comes with Node.js)
-- A modern web browser
+- NodeJS
+- Vite
 
 ## Detailed Implementation Guide
 
