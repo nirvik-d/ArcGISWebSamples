@@ -13,6 +13,8 @@ A web application demonstrating the Imagery Tile Layer with Raster Shaded Relief
 
 ## Screenshots
 
+<img width="959" alt="image" src="https://github.com/user-attachments/assets/4cdf2f9e-3422-4492-b81f-fe2156355785" />
+
 *Imagery visualization with shaded relief effects*
 
 ## Prerequisites
