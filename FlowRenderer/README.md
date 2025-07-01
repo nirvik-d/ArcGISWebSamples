@@ -1,6 +1,26 @@
 # ArcGIS FlowRenderer with Effects and Blending
 
-A web application demonstrating the FlowRenderer with effects and blending using ArcGIS Maps SDK for JavaScript.
+A web application demonstrating the FlowRenderer with effects and blending using ArcGIS Maps SDK for JavaScript. This component visualizes flow patterns with advanced rendering effects and blending modes.
+
+## Features
+
+- **Flow Visualization**: Dynamic rendering of flow patterns and movements
+- **Visual Effects**: Advanced effects for enhanced flow visualization
+- **Blending Modes**: Multiple blending options for flow layers
+- **Custom Styling**: Configurable colors and patterns
+- **Performance Optimized**: Efficient rendering of complex flow patterns
+- **Dark Theme Integration**: Optimized for dark theme UI
+
+## Screenshots
+
+![Flow visualization](image.png)
+
+*Flow visualization with advanced effects and blending*
+
+## Prerequisites
+
+- NodeJS
+- Vite
 
 ## Detailed Implementation Guide
 
@@ -160,3 +180,32 @@ require([
    ```bash
    npm run build
    ```
+
+   This will create a production-ready build in the `dist` directory
+
+3. **Preview Production Build**
+   ```bash
+   npm run preview
+   ```
+
+## Usage
+
+1. **View the Flow Visualization**
+   - Open the application to see the flow visualization initialized
+   - The dark theme provides optimal contrast for flow patterns
+   - Flow patterns are automatically animated
+
+2. **Explore Flow Patterns**
+   - Use standard map navigation controls to explore different areas
+   - Zoom in to see detailed flow patterns
+   - Pan to view different regions
+
+3. **Adjust Flow Effects**
+   - The visualization uses multiple blending modes for depth
+   - Flow patterns have configurable colors and patterns
+   - Effects are optimized for performance
+
+4. **Use Navigation Controls**
+   - Standard zoom controls for adjusting view scale
+   - Pan controls for moving around the map
+   - Rotation controls for viewing flow patterns from different angles
