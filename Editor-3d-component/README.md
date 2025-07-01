@@ -230,24 +230,3 @@ require(["esri/layers/FeatureLayer", "esri/widgets/Editor"], function (
    ```bash
    npm run preview
    ```
-
-## Usage
-
-1. **View the Scene**
-   - Open the application to see the 3D scene initialized
-   - The scene displays 3D features with proper elevation
-
-2. **Edit Features**
-   - Use the Editor widget to interact with 3D features
-   - Real-time updates as you modify features
-   - Visual feedback during editing operations
-
-3. **Explore Features**
-   - Different feature types are styled with unique colors
-   - Size and rotation variations are visible
-   - Tooltips provide additional information about features
-
-4. **Scene Navigation**
-   - Use standard 3D navigation controls to explore the scene
-   - Zoom in/out to see different levels of detail
-   - Rotate the view to examine features from different angles

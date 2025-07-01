@@ -13,12 +13,14 @@ A web application demonstrating elevation profile visualization using ArcGIS Map
 
 ## Screenshots
 
-*Elevation profile visualization in a 3D scene*
+<img width="959" alt="image" src="https://github.com/user-attachments/assets/0fe60959-4e4e-4f40-96df-8fc238cdf414" />
+
+*Elevation profile visualization in a 3D scene using the Elevation profile widget*
 
 ## Prerequisites
 
-- ArcGIS Maps SDK v4.32
-- ArcGIS Map Components v4.32
+- NodeJS
+- Vite
 
 ## Detailed Implementation Guide
 
@@ -146,22 +148,7 @@ This implementation:
 
 ## Usage
 
-1. **View the Scene**
-   - Open the application to see the 3D scene initialized
-   - The scene displays both terrain and building features
-   - Use the elevation profile widget to visualize paths
-
-2. **Explore the Scene**
-   - Use navigation controls (top-left) to move around
-   - Zoom in/out to see different elevation details
-   - Rotate the view to examine elevation from different angles
-
-3. **Create Elevation Profiles**
-   - Use the elevation profile tool to draw paths
-   - View real-time elevation data along the path
-   - See both ground and building elevation profiles
-
-4. **Use Navigation Tools**
-   - Zoom: Use the zoom control in top-left
-   - Compass: Use the compass to orient the view
-   - Navigation Toggle: Switch between different navigation modes
+**Create Elevation Profiles**
+- Use the elevation profile tool to draw paths
+- View real-time elevation data along the path
+- See both ground and building elevation profiles
