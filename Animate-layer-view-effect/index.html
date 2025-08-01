@@ -6,26 +6,24 @@
       name="viewport"
       content="initial-scale=1,maximum-scale=1,user-scalable=no"
     />
-    <title>
-      Animate layer view effect | Sample | ArcGIS Maps SDK for JavaScript 4.32
-    </title>
-
-    <link
-      rel="stylesheet"
-      href="https://js.arcgis.com/4.32/esri/themes/light/main.css"
-    />
-    <script src="https://js.arcgis.com/4.32/"></script>
-
-    <link rel="stylesheet" href="./src/style.css" />
+    <title>Animate Layer View Effect</title>
   </head>
 
   <body>
     <div id="applicationDiv">
-      <div id="viewDiv">
-        <div id="titleDiv" class="esri-widget">
-          Obama / McCain 2008 Election - voting districts gap
-        </div>
-      </div>
+      <arcgis-map item-id="3582b744bba84668b52a16b0b6942544">
+        <arcgis-placement position="top-left">
+          <div id="titleDiv" class="esri-widget">
+            Obama / McCain 2008 Election - voting districts gap
+          </div>
+        </arcgis-placement>
+        <arcgis-placement position="top-left">
+          <arcgis-expand>
+            <arcgis-legend></arcgis-legend>
+          </arcgis-expand>
+        </arcgis-placement>
+      </arcgis-map>
+      
       <div id="sliderContainer" class="esri-widget">
         <span id="sliderValue"></span>
         <div id="sliderInnerContainer">
@@ -75,6 +73,7 @@
       </div>
       <div class="tooltip-text">Click to view precincts with similar gap</div>
     </div>
-    <script type="module" src="./src/main.js"></script>
+    
+    <script type="module" src="./src/main.ts"></script>
   </body>
 </html>
