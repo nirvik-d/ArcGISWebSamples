@@ -27,149 +27,158 @@ A web application demonstrating different basemaps and projections using ArcGIS 
 
 ## Detailed Implementation Guide
 
-1.  **Initialize the Project**
+### Initialize a new Vite Project
 
-    ```bash
-    # Create a new Vite project
-    npm create vite@latest
-    ```
+```bash
+npm create vite@latest
+```
 
-    Follow the instructions on screen to initialize the project.
+Follow the instructions on screen to initialize the project.
 
-2.  **HTML Structure (index.html)**
+### Install ArcGIS Maps SDK for JavaScript
 
-    ```html
-    <!doctype html>
-    <html lang="en">
+```bash
+npm install @arcgis/map-components
+```
 
-    <head>
-      <meta charset="utf-8" />
-      <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
-      <title>Basemaps with different projections</title>
+### HTML Structure (index.html)
 
-        <script type="module" src="[https://js.arcgis.com/calcite-components/3.0.3/calcite.esm.js](https://js.arcgis.com/calcite-components/3.0.3/calcite.esm.js)"></script>
+```html
+<!doctype html>
+<html lang="en">
 
-        <link rel="stylesheet" href="[https://js.arcgis.com/4.32/esri/themes/light/main.css](https://js.arcgis.com/4.32/esri/themes/light/main.css)" />
-      <script src="[https://js.arcgis.com/4.32/](https://js.arcgis.com/4.32/)"></script>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>Basemaps with different projections</title>
+</head>
 
-        <script type="module" src="[https://js.arcgis.com/map-components/4.32/arcgis-map-components.esm.js](https://js.arcgis.com/map-components/4.32/arcgis-map-components.esm.js)"></script>
+<body>
+  <arcgis-map item-id="8d91bd39e873417ea21673e0fee87604" center="-100, 35" zoom="2">
+    <arcgis-zoom position="top-left"></arcgis-zoom>
+    <arcgis-placement position="top-right">
+      <div id="srDiv" class="esri-widget"></div>
+    </arcgis-placement>
+    <arcgis-expand position="top-right">
+      <arcgis-basemap-gallery></arcgis-basemap-gallery>
+    </arcgis-expand>
+  </arcgis-map>
+  <script type="module" src="./src/main.ts"></script>
+</body>
 
-        <link rel="stylesheet" href="./src/style.css" />
-    </head>
+</html>
+```
 
-    <body>
-        <arcgis-map item-id="8d91bd39e873417ea21673e0fee87604" center="-100, 35" zoom="2">
-            <arcgis-zoom position="top-left"></arcgis-zoom>
-        
-            <arcgis-placement position="top-right">
-          <div id="srDiv" class="esri-widget"></div>
-        </arcgis-placement>
-        
-            <arcgis-expand position="top-right">
-          <arcgis-basemap-gallery></arcgis-basemap-gallery>
-        </arcgis-expand>
-      </arcgis-map>
-      
-        <script type="module" src="./src/main.js"></script>
-    </body>
-    </html>
-    ```
+### CSS Styling (src/style.css)
 
-3.  **CSS Styling (src/style.css)**
+```css
+@import "https://js.arcgis.com/calcite-components/3.2.1/calcite.css";
+@import "https://js.arcgis.com/4.33/@arcgis/core/assets/esri/themes/light/main.css";
+@import "https://js.arcgis.com/4.33/map-components/main.css";
 
-    ```css
-    /* Full viewport coverage */
-    html,
-    body {
-      padding: 0;
-      margin: 0;
-      height: 100%;
-      width: 100%;
+html,
+body {
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+
+#srDiv {
+  height: 40px;
+  padding: 10px;
+}
+```
+
+### TypeScript Implementation (src/main.ts)
+
+1. **Begin by importing the necessary headers.**
+
+```typescript
+import "./style.css";
+
+import "@arcgis/map-components/components/arcgis-map";
+import "@arcgis/map-components/components/arcgis-basemap-gallery";
+import "@arcgis/map-components/components/arcgis-expand";
+import "@arcgis/map-components/components/arcgis-placement";
+import "@arcgis/map-components/components/arcgis-zoom";
+
+import Portal from "@arcgis/core/portal/Portal";
+import PortalBasemapsSource from "@arcgis/core/widgets/BasemapGallery/support/PortalBasemapsSource";
+```
+
+2. **Get the map and check if its ready**
+
+```typescript
+// Get the map
+const map = document.querySelector("arcgis-map");
+if (!map) {
+  console.error("Map not found");
+} 
+```
+
+3. **When the map is ready, get the basemap gallery, set the source and update the spatial reference information**
+
+```typescript
+else {
+  // Wait for the map to be ready
+  map.addEventListener("arcgisViewReadyChange", () => {
+    if (map.ready) {
+      // Get the basemap gallery
+      const basemapGallery = document.querySelector("arcgis-basemap-gallery");
+      if (!basemapGallery) {
+        console.error("Basemap gallery not found");
+        return;
+      }
+
+      // Create a portal instance
+      const portal = new Portal();
+
+      // Create a source for basemaps from a portal group
+      // containing basemaps with different projections
+      const source = new PortalBasemapsSource({
+        portal,
+        query: {
+          id: "bdb9d65e0b5c480c8dcc6916e7f4e099",
+        },
+      });
+
+      // Set the source for the basemap gallery
+      basemapGallery.source = source;
+
+      // Update the spatial reference information
+      const srDiv = document.querySelector("#srDiv");
+      if (!srDiv) {
+        console.error("SR Div not found");
+        return;
+      } else {
+        srDiv.innerHTML = `map.spatialReference.wkid = <b>${map.spatialReference.wkid}</b>`;
+      }
     }
-
-    #srDiv {
-      height: 40px;
-      padding: 10px;
-    }
-    ```
-
-4.  **JavaScript Implementation (src/main.js)**
-
-    ```javascript
-    // Initialize required ArcGIS modules
-    require([
-      "esri/portal/Portal",
-      "esri/widgets/BasemapGallery/support/PortalBasemapsSource",
-    ], (Portal, PortalBasemapsSource) => {
-      // Get reference to the map component
-      // Using querySelector to interact with the ArcGIS web component
-      const map = document.querySelector("arcgis-map");
-
-      // Wait for the map to be fully initialized
-      // Ensures all components are ready before configuration
-      map.addEventListener("arcgisViewReadyChange", () => {
-        if (map.ready) {
-          // Get reference to the basemap gallery widget
-          // Using querySelector to interact with the ArcGIS web component
-          const basemapGallery = document.querySelector("arcgis-basemap-gallery");
-
-          // Create a portal instance
-          // Portal is used to access ArcGIS Online services
-          const portal = new Portal();
-
-          // Create a source for basemaps from a portal group
-          // This specific group ID contains basemaps with different projections
-          // The group ID is from ArcGIS Online and contains curated basemaps
-          const source = new PortalBasemapsSource({
-            portal,
-            query: {
-              id: "bdb9d65e0b5c480c8dcc6916e7f4e099",
-            },
-          });
-
-          // Set the source for the basemap gallery
-          // This will populate the gallery with basemaps from the portal group
-          basemapGallery.source = source;
-
-          // Update the spatial reference information
-          // Shows the current map projection's Well-Known ID (WKID)
-          // This helps users understand the current map projection
-          document.getElementById(
-            "srDiv"
-          ).innerHTML = `map.spatialReference.wkid = <b>${map.spatialReference.wkid}</b>`;
-        }
-      });
-    });
-    ```
+  });
+}
+```
 
 ## Running the Application
 
-1.  **Development Server**
+1. **Development Server**
 
-    ```bash
-    npm run dev
-    ```
+```bash
+npm run dev
+```
 
-    This will start the development server at `http://localhost:5173`
+This will start the development server at `http://localhost:5173`
 
-2.  **Build for Production**
+2. **Build for Production**
 
-    ```bash
-    npm run build
-    ```
+```bash
+npm run build
+```
 
-    This will create a production-ready build in the `dist` directory
+This will create a production-ready build in the `dist` directory
 
-3.  **Preview Production Build**
+3. **Preview Production Build**
 
-    ```bash
-    npm run preview
-    ```
-
-    This will serve the production build locally
-
-## Usage
-
-* **Basemap Selection:** Click on the basemap gallery icon (an `arcgis-expand` component containing `arcgis-basemap-gallery`) in the top-right corner to open the gallery. Select different basemaps from the gallery, and observe how the map's appearance and spatial reference (WKID) update automatically.
-* **Spatial Reference Information:** The current spatial reference's Well-Known ID (WKID) is displayed in the top-right corner, providing real-time feedback on the map's projection.
-* **Map Navigation:** Use the zoom control in the top-left corner to navigate and adjust the zoom level of the map.
+```bash
+npm run preview
+```

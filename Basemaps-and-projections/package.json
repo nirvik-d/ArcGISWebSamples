@@ -10,5 +10,8 @@
   },
   "devDependencies": {
     "vite": "^6.3.5"
+  },
+  "dependencies": {
+    "@arcgis/map-components": "^4.33.13"
   }
 }

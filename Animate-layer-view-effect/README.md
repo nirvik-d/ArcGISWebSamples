@@ -10,7 +10,6 @@ A web application demonstrating animated visualization of election results using
 * **Dynamic Feature Effects:** Utilizes the ArcGIS Maps SDK's `featureEffect` to apply visual filters (e.g., drop-shadow, grayscale, blur, opacity) to features based on the selected gap, highlighting features within the target range and de-emphasizing others.
 * **Real-time Hover Tooltip:** On mouse hover, a custom tooltip appears, displaying a bar chart with the exact vote counts for Obama and McCain, as well as the calculated gap percentage for the hovered precinct.
 * **Click-to-Animate:** Clicking on any precinct animates the slider to the specific gap percentage of that precinct, allowing for focused exploration.
-* **Standard Map Widgets:** Includes essential map navigation widgets like Legend, Home, and Fullscreen for improved user experience.
 
 ## Screenshots
 
@@ -25,25 +24,25 @@ A web application demonstrating animated visualization of election results using
 
 ## Project Setup
 
-1.  **Initialize Project**
+### Initialize Project
 
-    ```bash
-    # Create a new Vite project
-    npm create vite@latest
-    ```
+```bash
+# Create a new Vite project
+npm create vite@latest
+```
 
-    Follow the instructions on screen to initialize the project.
+Follow the instructions on screen to initialize the project.
 
-2.  **Install Dependencies**
+### Install Dependencies
 
-    ```bash
-    npm install
-    npm install @arcgis/map-components
-    ```
+```bash
+npm install
+npm install @arcgis/map-components
+```
 
 ## Code Structure
 
-1.  **HTML Structure (index.html)**
+### HTML Structure (index.html)
 
 ```html
 <!DOCTYPE html>
@@ -127,7 +126,7 @@ A web application demonstrating animated visualization of election results using
 </html>
 ```
 
-2.  **CSS Styling (src/style.css)**
+### CSS Styling (src/style.css)
 
 ```css
 @import "https://js.arcgis.com/calcite-components/3.2.1/calcite.css";
@@ -363,10 +362,11 @@ body {
 }
 ```
 
-### JavaScript Implementation (src/main.js)
+### TypeScript Implementation (src/main.ts)
 
 1. **Begin by importing the necessary headers.**
-```javascript
+
+```typescript
 import "./style.css";
 
 import "@arcgis/map-components/components/arcgis-map";
@@ -382,7 +382,8 @@ import * as promiseUtils from "@arcgis/core/core/promiseUtils";
 ```
 
 2. **Fetch the necessary feature layers to display the data on the map.**
-```javascript
+
+```typescript
 const layer = new FeatureLayer({
   portalItem: {
     id: "359bc19d9bbb4f2ba1b2baec7e13e757",
@@ -460,8 +461,9 @@ map?.addEventListener("arcgisViewReadyChange", async () => {
 });
 ```
 
-3. **Setup the slider and the utility functions inside the arcgisViewReadyChange event listener.**
-```javascript
+3. **Inside the map ready event listener, setup the slider and the utility functions.**
+
+```typescript
 // Add the slider
   const slider = new Slider({
     container: "slider",
@@ -490,8 +492,9 @@ map?.addEventListener("arcgisViewReadyChange", async () => {
   });
 ```
 
-4. **Setup the animation UI and utility functions inside the arcgisViewReadyChange event listener.**
-```javascript
+4. **Inside the map ready event listener, setup the animation UI and utility functions.**
+
+```typescript
 // Add the play button
 const playButton = document.querySelector("#playButton");
 playButton?.addEventListener("click", () => {
@@ -584,8 +587,9 @@ function startAnimation() {
 }
 ```
 
-5. **Set the slider value inside the arcgisViewReadyChange event listener.**
-```javascript
+5. **Inside the map ready event listener, set the slider value.**
+
+```typescript
 // Set the slider value
 function setGapValue(value: number) {
   if (sliderValue) {
@@ -599,8 +603,9 @@ function setGapValue(value: number) {
 }
 ```
 
-6. **Create a feature effect to highlight the features based on the gap value inside the arcgisViewReadyChange event listener.**
-```javascript
+6. **Inside the map ready event listener, create a feature effect to highlight the features based on the gap value.**
+
+```typescript
 function createEffect(gapValue: number) {
   gapValue = Math.min(100, Math.max(0, gapValue));
 
@@ -620,8 +625,9 @@ function createEffect(gapValue: number) {
 }
 ```
 
-7. **Create a utility function to generate a tool tip upon hovering over the map or clicking on a feature.**
-```javascript
+7. **Inside the map ready event listener, create a utility function to generate a tool tip upon hovering over the map or clicking on a feature.**
+
+```typescript
 const layerView = await view.whenLayerView(layer);
 const sliderValue = document.querySelector("#sliderValue");
 setGapValue(50);
@@ -710,8 +716,9 @@ function setupHoverTooltip() {
 setupHoverTooltip();
 ```
 
-8. **Create the tooltip UI and utility functions**
-```javascript
+8. **Inside the map ready event listener, create the tooltip UI and utility functions.**
+
+```typescript
 // Create the tooltip
 function createTooltip() {
   const tooltip = document.createElement("div");
@@ -869,24 +876,16 @@ function createTooltip() {
 
 ## Running the Application
 
-1.  **Development Server**
+1. **Development Server**
 
-    ```bash
-    npm run dev
-    ```
+```bash
+npm run dev
+```
 
-    This will start the development server at `http://localhost:5173`
+This will start the development server at `http://localhost:5173`
 
-2.  **Build for Production**
+2. **Build for Production**
 
-    ```bash
-    npm run build
-    ```
-
-## Usage
-
-* **Slider:** Use the slider at the bottom to filter precincts based on the percentage gap between Obama and McCain votes. Dragging the slider will dynamically update the map's visualization.
-* **Play/Pause Button:** Click the "Play" button next to the slider to start an automatic animation that cycles through different gap percentages. Click "Pause" to stop the animation.
-* **Hover Tooltip:** Hover your mouse over any precinct on the map to see a detailed tooltip showing the exact vote counts for Obama and McCain, as well as the calculated gap percentage for that specific precinct.
-* **Click-to-Animate:** Click on any precinct on the map to automatically animate the slider to that precinct's specific gap percentage.
-* **Map Navigation:** Use the standard map widgets (Legend, Home, Fullscreen) in the top-left and top-right corners for basic map interaction and information.
+```bash
+npm run build
+```
