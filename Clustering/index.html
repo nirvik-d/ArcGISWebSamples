@@ -1,33 +1,28 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta
-    name="viewport"
-    content="initial-scale=1,maximum-scale=1,user-scalable=no"
-  />
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
 
-<title>Clustering - advanced configuration</title>
+    <title>Clustering - advanced configuration</title>
+  </head>
 
-<link rel="stylesheet" href="https://js.arcgis.com/4.32/esri/themes/dark/main.css" />
-<script src="https://js.arcgis.com/4.32/"></script>
-
-<link rel="stylesheet" href="./src/style.css">
-
-</head>
-
-<body>
-  <div id="viewDiv"></div>
-  <div id="infoDiv" class="esri-widget">
-    <div id="description">
-      Show power plants with at least <span id="sliderValue">0</span> megawatts of capacity
-    </div>
-    <div id="sliderContainer">
-      <div id="sliderDiv"></div>
-    </div>
-    <div id="legendDiv"></div>
-  </div>
-  <script type="module" src="./src/main.js"></script>
-</body>
-
+  <body>
+    <arcgis-map item-id="8d91bd39e873417ea21673e0fee87604">
+      <div id="infoDiv" class="esri-widget">
+        <div id="description">
+          Show power plants with at least
+          <span id="sliderValue">0</span> megawatts of capacity
+        </div>
+        <div id="sliderContainer">
+          <div id="sliderDiv"></div>
+        </div>
+        <div id="legendDiv"></div>
+      </div>
+    </arcgis-map>
+    <script type="module" src="./src/main.ts"></script>
+  </body>
 </html>

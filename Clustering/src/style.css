@@ -1,19 +1,28 @@
-html, body, #viewDiv {
-  height: 100%;
-  width: 100%;
+@import "https://js.arcgis.com/calcite-components/3.2.1/calcite.css";
+@import "https://js.arcgis.com/4.33/@arcgis/core/assets/esri/themes/light/main.css";
+@import "https://js.arcgis.com/4.33/map-components/main.css";
+
+html,
+body {
+  height: 100vh;
+  width: 100vw;
   margin: 0;
   padding: 0;
 }
+
 #infoDiv {
   padding: 10px;
   width: 275px;
 }
+
 #sliderValue{
   font-weight: bolder;
 }
+
 #legendDiv{
   width: 260px;
 }
+
 #description{
   padding: 10px 0 10px 0;
 }
