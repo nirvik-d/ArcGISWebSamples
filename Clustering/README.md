@@ -24,7 +24,7 @@ Follow the instructions on screen to initialize the project.
 ### Install Dependencies
 
 ```bash
-npm install
+npm install @arcgis/map-components
 ```
 
 ## Code Structure
@@ -99,7 +99,7 @@ body {
 }
 ```
 
-### JavaScript Implementation
+### TypeScript Implementation
 
 1. **Import the necessary headers**
 

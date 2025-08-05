@@ -1,93 +1,3 @@
-# ArcGIS FlowRenderer with Effects and Blending
-
-A web application demonstrating the FlowRenderer with effects and blending using ArcGIS Maps SDK for JavaScript. This component visualizes flow patterns with advanced rendering effects and blending modes.
-
-## Features
-
-- **Flow Visualization**: Dynamic rendering of flow patterns and movements
-- **Visual Effects**: Advanced effects for enhanced flow visualization
-- **Blending Modes**: Multiple blending options for flow layers
-- **Custom Styling**: Configurable colors and patterns
-- **Performance Optimized**: Efficient rendering of complex flow patterns
-- **Dark Theme Integration**: Optimized for dark theme UI
-
-## Screenshots
-
-![Flow visualization](image.png)
-
-*Flow visualization with advanced effects and blending*
-
-## Prerequisites
-
-- NodeJS
-- Vite
-
-## Detailed Implementation Guide
-
-### Initialize Project
-
-```bash
-# Create a new Vite project
-npm create vite@latest
-```
-
-Follow the instructions on screen to initialize the project.
-
-### Install Dependencies
-
-```bash
-npm install @arcgis/map-components
-```
-
-## Code Structure
-
-### HTML Structure
-
-```html
-<!doctype html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
-  <title>FlowRenderer with effects and blending | Sample | ArcGIS Maps SDK for JavaScript 4.32</title>
-
-</head>
-<body>
-  <arcgis-map center="-289666, -3085785" scale="40000000">
-    <arcgis-zoom position="top-left"></arcgis-zoom>
-    <arcgis-fullscreen position="top-left"></arcgis-fullscreen>
-    <arcgis-legend position="top-right"></arcgis-legend>
-  </arcgis-map>
-  <script type="module" src="./src/main.ts"></script>
-</body>
-</html>
-```
-
-### CSS Styling (src/style.css)
-
-```css
-@import "https://js.arcgis.com/calcite-components/3.2.1/calcite.css";
-@import "https://js.arcgis.com/4.33/@arcgis/core/assets/esri/themes/light/main.css";
-@import "https://js.arcgis.com/4.33/map-components/main.css";
-
-html,
-body {
-  padding: 0;
-  margin: 0;
-  height: 100%;
-  width: 100%;
-  background-color: #4c4c4c;
-}
-```
-
-### TypeScript Implementation (src/main.ts)
-
-The TypeScript file implements the ArcGIS web application:
-
-1. **Import the required modules**
-
-```typescript
 import "./style.css";
 
 import "@arcgis/map-components/components/arcgis-map";
@@ -104,21 +14,14 @@ import ImageryTileLayer from "@arcgis/core/layers/ImageryTileLayer";
 import GroupLayer from "@arcgis/core/layers/GroupLayer";
 import Basemap from "@arcgis/core/Basemap";
 import Map from "@arcgis/core/Map";
-```
 
-2. **Create a Spilhaus basemap**
-
-```typescript
 // Create a Spilhaus basemap
 const spilhausBasemap = new TileLayer({
   url: "https://tiles.arcgis.com/tiles/nGt4QxSblgDfeJn9/arcgis/rest/services/Spilhaus_Vibrant_Basemap/MapServer",
   effect: "saturate(10%) brightness(0.3)", // dim brightness to create darker style basemap
 });
-```
 
-3. **Create a color ramp**
-
-```typescript
+// Create a color ramp
 const colorRamp = new MultipartColorRamp({
   colorRamps: [
     new AlgorithmicColorRamp({
@@ -143,11 +46,8 @@ const colorRamp = new MultipartColorRamp({
     }),
   ],
 });
-```
 
-4. **Create a sea surface temperature layer**
-
-```typescript
+// Create a sea surface temperature layer
 const temperatureLayer = new ImageryTileLayer({
   url: "https://tiledimageservices.arcgis.com/jIL9msH9OI208GCb/arcgis/rest/services/HyCOM_Surface_Temperature___Spilhaus/ImageServer",
   renderer: {
@@ -156,11 +56,8 @@ const temperatureLayer = new ImageryTileLayer({
     type: "raster-stretch",
   },
 });
-```
 
-5. **Create a ocean currents layer**
-
-```typescript
+// Create a ocean currents layer
 const currentsLayer = new ImageryTileLayer({
   url: "https://tiledimageservices.arcgis.com/jIL9msH9OI208GCb/arcgis/rest/services/Spilhaus_UV_ocean_currents/ImageServer",
   renderer: {
@@ -171,20 +68,13 @@ const currentsLayer = new ImageryTileLayer({
   },
   blendMode: "destination-in", // temperature layer will only display on top of this layer
 });
-```
 
-6. **Create a group layer**
-
-```typescript
+// Create a group layer
 const groupLayer = new GroupLayer({
   effect: "bloom(2, 0.5px, 0.0)", // apply bloom effect to make the colors pop
   layers: [temperatureLayer, currentsLayer],
 });
-```
 
-7. **Get the map, create a new map and assign the basemap and layers, and set the new map to the map**
-
-```typescript
 // Get the map
 const map = document.querySelector("arcgis-map");
 if (!map) {
@@ -201,11 +91,7 @@ const newMap = new Map({
 
 // Set the map
 map.map = newMap;
-```
 
-8. **Add legend**
-
-```typescript
 // Get the legend
 const legend = document.querySelector("arcgis-legend");
 if (!legend) {
@@ -219,26 +105,3 @@ legend.layerInfos = [
     title: "Sea surface temperature",
   },
 ];
-```
-
-## Running the Application
-
-1. **Development Server**
-
-```bash
-npm run dev
-```
-
-This will start the development server at `http://localhost:5173`
-
-2. **Build for Production**
-```bash
-npm run build
-```
-
-This will create a production-ready build in the `dist` directory
-
-3. **Preview Production Build**
-```bash
-npm run preview
-```

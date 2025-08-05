@@ -1,95 +1,5 @@
-# Dot Density Visualization Component
+import "./style.css"
 
-A web application demonstrating population distribution using dot density visualization with ArcGIS Maps SDK for JavaScript.
-
-## Features
-
-- **Dot Density Visualization**: Visualizes data points using dot density rendering
-- **Customizable Colors**: Configurable colors for different categories of data
-- **Interactive Map**: Real-time updates and responsive interactions
-- **ArcGIS Integration**: Built using ArcGIS Maps SDK for JavaScript
-- **Modern UI**: Clean and intuitive user interface
-
-## Screenshots
-
-<img width="959" alt="image" src="https://github.com/user-attachments/assets/6bb2d67f-5e39-45cf-b818-96c08de1f40f" />
-
-*Map showing the different current population estimates*
-
-## Pre-requisites
-
--NodeJS
--Vite
-
-## Project Setup
-
-### Initialize Project
-
-```bash
-# Create a new Vite project
-npm create vite@latest
-```
-Follow the instructions on screen to initialize the project.
-
-### Install Dependencies
-
-```bash
-# Install dependencies
-npm install
-```
-
-## Code Structure
-
-### HTML Structure (index.html)
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="initial-scale=1,maximum-scale=1,user-scalable=no"
-    />
-    <title>Dot density</title>
-  </head>
-  <body>
-    <arcgis-map item-id="56b5bd522c52409c90d902285732e9f1">
-      <arcgis-zoom position="top-left"></arcgis-zoom>
-      <arcgis-expand position="top-left" group="top-left">
-        <arcgis-legend></arcgis-legend>
-      </arcgis-expand>
-      <arcgis-expand position="top-left" group="top-left">
-        <arcgis-bookmarks></arcgis-bookmarks>
-      </arcgis-expand>
-    </arcgis-map>
-
-    <script type="module" src="./src/main.ts"></script>
-  </body>
-</html>
-```
-
-### CSS Styling (src/style.css)
-
-```css
-@import "https://js.arcgis.com/calcite-components/3.2.1/calcite.css";
-@import "https://js.arcgis.com/4.33/esri/themes/light/main.css";
-@import "https://js.arcgis.com/4.33/map-components/main.css";
-
-html,
-body {
-  padding: 0;
-  margin: 0;
-  height: 100%;
-  width: 100%;
-}
-```
-
-### TypeScript Implementation (src/main.ts)
-
-1. **Import the required modules**
-
-```typescript
 import "@arcgis/map-components/components/arcgis-map"
 import "@arcgis/map-components/components/arcgis-zoom"
 import "@arcgis/map-components/components/arcgis-expand"
@@ -98,11 +8,9 @@ import "@arcgis/map-components/components/arcgis-bookmarks"
 
 import DotDensityRenderer from "@arcgis/core/renderers/DotDensityRenderer"
 import FeatureLayer from "@arcgis/core/layers/FeatureLayer"
-```
 
-2. **Create a dot density renderer with demographic attributes**
-
-```typescript
+// Create a dot density renderer for population visualization
+// This renderer will display population distribution using dots
 const dotDensityRenderer = new DotDensityRenderer({
   // Each dot represents 100 people
   // This value balances visual clarity with data representation
@@ -175,11 +83,7 @@ const dotDensityRenderer = new DotDensityRenderer({
   ],
 });
 
-```
-
-3. **Create a feature layer with ACS population data and assign the dot density renderer to it**
-
-```typescript
+// URL for the feature layer
 const url =
   "https://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/ACS_Population_by_Race_and_Hispanic_Origin_Boundaries/FeatureServer/2";
 
@@ -289,11 +193,8 @@ const layer = new FeatureLayer({
   },
   renderer: dotDensityRenderer, // Apply the dot density renderer to the feature layer
 });
-```
 
-5. **Get the map and set up the constraints before adding the layer to it**
-
-```typescript
+// Get the map
 const map: HTMLArcgisMapElement | null = document.querySelector("arcgis-map");
 if (!map) {
   throw new Error("Map not found");
@@ -324,17 +225,3 @@ map.addEventListener("arcgisViewReadyChange", async () => {
 
   map.map?.add(layer);
 });
-```
-
-## Running the Application
-
-1. **Development Server**
-```bash
-npm run dev
-```
-This will start the development server at `http://localhost:5173`
-
-2. **Build for Production**
-```bash
-npm run build
-```

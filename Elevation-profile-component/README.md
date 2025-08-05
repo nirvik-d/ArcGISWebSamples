@@ -24,14 +24,21 @@ A web application demonstrating elevation profile visualization using ArcGIS Map
 
 ## Detailed Implementation Guide
 
-1. **Initialize the Project**
-   ```bash
-   # Create a new Vite project
-   npm create vite@latest
-   ```
-   Follow the instructions on screen to initialize the project.
+### Initialize the Project
 
-2. **HTML Structure (index.html)**
+```bash
+# Create a new Vite project
+npm create vite@latest
+```
+Follow the instructions on screen to initialize the project.
+
+### Install Dependencies
+
+```bash
+npm install @arcgis/map-components
+```
+
+### HTML Structure (index.html)
 
 Edit the index.html file to include the following code:
 
@@ -39,116 +46,109 @@ Edit the index.html file to include the following code:
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Required meta tags and title -->
     <meta charset="utf-8" />
-    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
-    <title>Elevation Profile Visualization</title>
-
-    <!-- Load required ArcGIS components -->
-    <!-- Core ArcGIS Maps SDK CSS and JavaScript -->
-    <link rel="stylesheet" href="https://js.arcgis.com/4.32/esri/themes/light/main.css" />
-    <script src="https://js.arcgis.com/4.32/"></script>
-    
-    <!-- Modern UI components from ArcGIS -->
-    <script type="module" src="https://js.arcgis.com/map-components/4.32/arcgis-map-components.esm.js"></script>
-    
-    <!-- Custom styles -->
-    <link rel="stylesheet" href="./src/style.css" />
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <title>Elevation Profile component</title>
   </head>
+
   <body>
-    <!-- Main ArcGIS Scene with initial camera position -->
-    <!-- Uses a base map of New York City -->
-    <arcgis-scene item-id="9a542f6755274436985617a462ffdf44" 
-                  camera-position="-74.006438, 40.6934417, 686"
-                  camera-tilt="66" 
-                  camera-heading="353">
-      <!-- Navigation Controls -->
-      <!-- Positioned in top-left for easy access -->
+    <arcgis-scene
+      item-id="9a542f6755274436985617a462ffdf44"
+      camera-position="-74.006438, 40.6934417, 686"
+      camera-tilt="66"
+      camera-heading="353"
+    >
       <arcgis-zoom position="top-left"></arcgis-zoom>
       <arcgis-navigation-toggle position="top-left"></arcgis-navigation-toggle>
-      <arcgis-compass position="top-left"></arcgis-compass>
-      
-      <!-- Elevation Profile Widget -->
-      <!-- Positioned in top-right for easy access -->
-      <arcgis-elevation-profile position="top-right"></arcgis-elevation-profile>
+      <arcgis-compass position="top-left"> </arcgis-compass>
+      <arcgis-elevation-profile position="top-right">
+      </arcgis-elevation-profile>
     </arcgis-scene>
-    
-    <!-- Main application logic -->
     <script type="module" src="./src/main.js"></script>
   </body>
 </html>
+
 ```
 
-2. **CSS Styling (src/style.css)**
+### CSS Styling (src/style.css)
 
 Edit the style.css file to include the following code:
 
 ```css
-/* Full viewport coverage */
+@import "https://js.arcgis.com/calcite-components/3.2.1/calcite.css";
+@import "https://js.arcgis.com/4.33/@arcgis/core/assets/esri/themes/light/main.css";
+@import "https://js.arcgis.com/4.33/map-components/main.css";
+
 html,
 body {
-  padding: 0;
+  height: 100vh;
+  width: 100vw;
   margin: 0;
-  height: 100%;
-  width: 100%;
+  padding: 0;
 }
 
 .esri-elevation-profile.esri-component.esri-widget--panel {
   width: 350px !important;
 }
+
 ```
 
-3. **JavaScript Implementation (src/main.js)**
+### TypeScript Implementation (src/main.ts)
 
-Edit the main.js file to include the following code:
+1. **Add the following code to the main.ts file**
 
-```javascript
+```typescript
+import "./style.css";
+
+import "@arcgis/map-components/components/arcgis-scene";
+import "@arcgis/map-components/components/arcgis-elevation-profile";
+import "@arcgis/map-components/components/arcgis-zoom";
+import "@arcgis/map-components/components/arcgis-navigation-toggle";
+import "@arcgis/map-components/components/arcgis-compass";
+import Collection from "@arcgis/core/core/Collection";
+
 const scene = document.querySelector("arcgis-scene");
+if (!scene) {
+  throw new Error("Scene not found");
+}
 const elevationProfile = document.querySelector("arcgis-elevation-profile");
+if (!elevationProfile) {
+  throw new Error("Elevation profile not found");
+}
 
 // Wait for the scene to be ready
 scene.addEventListener("arcgisViewReadyChange", () => {
-  elevationProfile.profiles = [
+  elevationProfile.profiles = new Collection([
     {
       type: "ground" // First profile line samples the ground elevation
     },
     {
       type: "view" // Second profile samples the view and shows building profiles
     }
-  ];
+  ]);
 });
 ```
-
-This implementation:
-- Creates an elevation profile visualization with two profiles:
-  - Ground profile: Shows terrain elevation
-  - View profile: Shows building profiles and other 3D features
-- Uses event listeners to ensure proper initialization
-- Configures the elevation profile widget with appropriate settings
 
 ## Running the Application
 
 1. **Development Server**
-   ```bash
-   npm run dev
-   ```
-   This will start the development server at `http://localhost:5173`
+```bash
+npm run dev
+```
+This will start the development server at `http://localhost:5173`
 
 2. **Build for Production**
-   ```bash
-   npm run build
-   ```
-   This will create a production-ready build in the `dist` directory
+```bash
+npm run build
+```
+This will create a production-ready build in the `dist` directory
 
 3. **Preview Production Build**
-   ```bash
-   npm run preview
-   ```
-   This will serve the production build locally
+```bash
+npm run preview
+```
+This will serve the production build locally
 
-## Usage
-
-**Create Elevation Profiles**
-- Use the elevation profile tool to draw paths
-- View real-time elevation data along the path
-- See both ground and building elevation profiles

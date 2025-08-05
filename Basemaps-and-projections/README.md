@@ -35,7 +35,7 @@ npm create vite@latest
 
 Follow the instructions on screen to initialize the project.
 
-### Install ArcGIS Maps SDK for JavaScript
+### Install dependencies
 
 ```bash
 npm install @arcgis/map-components

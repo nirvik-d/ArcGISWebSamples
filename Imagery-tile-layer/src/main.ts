@@ -1,159 +1,3 @@
-# ArcGIS Imagery Tile Layer
-
-A web application demonstrating the Imagery Tile Layer with Raster Shaded Relief rendering using ArcGIS Maps SDK for JavaScript. This component provides advanced imagery visualization with customizable shaded relief effects.
-
-## Features
-
-- **Imagery Visualization**: High-performance tile-based imagery display
-- **Shaded Relief**: Advanced raster-based shaded relief rendering
-- **Customizable Parameters**: Configurable hillshade types and color ramps
-- **Interactive Controls**: Real-time parameter adjustments
-- **Modern UI**: Calcite components for enhanced user experience
-- **Performance Optimized**: Efficient rendering of large imagery datasets
-
-## Screenshots
-
-<img width="959" alt="image" src="https://github.com/user-attachments/assets/4cdf2f9e-3422-4492-b81f-fe2156355785" />
-
-*Imagery visualization with shaded relief effects*
-
-## Prerequisites
-
-- NodeJS
-- Vite
-
-## Detailed Implementation Guide
-
-### Initialize Project
-
-```bash
-# Create a new Vite project
-npm create vite@latest
-```
-
-Follow the instructions on screen to initialize the project.
-
-### Install Dependencies
-
-```bash
-npm install @arcgis/map-components
-```
-
-## Code Structure
-
-### HTML Structure
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="initial-scale=1,maximum-scale=1,user-scalable=no"
-    />
-    <title>
-      ImageryTileLayer - shaded relief renderer | Sample | ArcGIS Maps SDK for
-      JavaScript 4.32
-    </title>
-  </head>
-
-  <body>
-    <calcite-shell content-behind>
-      <arcgis-map basemap="gray-vector" center="-111.819, 37.111" zoom="7">
-      </arcgis-map>
-      <calcite-shell-panel slot="panel-end" display-mode="float">
-        <calcite-block
-          expanded
-          id="rendererPanel"
-          heading="Shaded Relief Parameters"
-        >
-          <calcite-label>
-            Select Type:
-            <calcite-select id="hillshadeTypeSelect">
-              <calcite-option value="traditional">traditional</calcite-option>
-              <calcite-option value="multi-directional"
-                >multi-directional</calcite-option
-              >
-            </calcite-select>
-          </calcite-label>
-          <calcite-label>
-            Select Color Ramp:
-            <calcite-select id="colorRampSelect"></calcite-select>
-          </calcite-label>
-          <calcite-label>
-            Exaggeration Factor:
-            <calcite-slider
-              id="zFactorSlider"
-              value="1"
-              label-handles
-              label-ticks
-              max="10"
-              min="1"
-              ticks="1"
-            ></calcite-slider>
-          </calcite-label>
-          <calcite-label>
-            Sun Altitude:
-            <calcite-slider
-              id="altitudeSlider"
-              value="45"
-              label-handles
-              label-ticks
-              max="90"
-              min="0"
-              max-label="90"
-              min-label="0"
-              ticks="90"
-            ></calcite-slider>
-          </calcite-label>
-          <calcite-label>
-            Sun Azimuth:
-            <calcite-slider
-              id="azimuthSlider"
-              value="315"
-              label-handles
-              max="360"
-              min="0"
-            ></calcite-slider>
-          </calcite-label>
-          <calcite-label layout="inline">
-            <calcite-checkbox id="tinted" checked></calcite-checkbox>
-            Tinted hillshade
-          </calcite-label>
-          <calcite-label layout="inline">
-            <calcite-checkbox id="adjust" checked></calcite-checkbox>
-            Adjust for large scale
-          </calcite-label>
-        </calcite-block>
-      </calcite-shell-panel>
-    </calcite-shell>
-    <script type="module" src="./src/main.ts"></script>
-  </body>
-</html>
-```
-
-### CSS Styling (src/style.css)
-
-```css
-@import "https://js.arcgis.com/calcite-components/3.2.1/calcite.css";
-@import "https://js.arcgis.com/4.33/esri/themes/light/main.css";
-@import "https://js.arcgis.com/4.33/map-components/main.css";
-
-html,
-body {
-  padding: 0;
-  margin: 0;
-  height: 100%;
-  width: 100%;
-}
-```
-
-### TypeScript Implementation (src/main.ts)
-
-1. **Import required modules**
-
-```typescript
 import "./style.css";
 
 import "@arcgis/map-components/components/arcgis-map";
@@ -169,11 +13,7 @@ import "@esri/calcite-components/components/calcite-checkbox";
 import * as colorRamps from "@arcgis/core/smartMapping/raster/support/colorRamps";
 import ImageryTileLayer from "@arcgis/core/layers/ImageryTileLayer";
 import RasterShadedReliefRenderer from "@arcgis/core/renderers/RasterShadedReliefRenderer";
-```
 
-2. **Create renderer**
-
-```typescript
 let colorRamp = changeColorRamp("Elevation #1");
 const renderer = new RasterShadedReliefRenderer({
   altitude: 45,
@@ -183,21 +23,13 @@ const renderer = new RasterShadedReliefRenderer({
   scalingType: "adjusted",
   colorRamp,
 });
-```
 
-3. **Create the ImageryTileLayer**
-
-```typescript
 const url = "https://elevation3d.arcgis.com/arcgis/rest/services/WorldElevation3D/Terrain3D/ImageServer";
 const layer = new ImageryTileLayer({
   url,
   renderer,
 });
-```
 
-4. **Add the layer to the map**
-
-```typescript
 const map = document.querySelector("arcgis-map");
 if (!map) {
   throw new Error("Map not found");
@@ -208,11 +40,9 @@ map.addEventListener("arcgisViewReadyChange", () => {
   }
   map.map.add(layer);
 });
-```
 
-5. **Add Color Ramp Select**
-
-```typescript
+// Calcite components
+// Color Ramp Select
 const colorRampSelect: HTMLCalciteSelectElement | null =
   document.querySelector("#colorRampSelect");
 if (!colorRampSelect) {
@@ -231,11 +61,7 @@ colorRampSelect.addEventListener("calciteSelectChange", () => {
   colorRamp = changeColorRamp(colorRampSelect.value);
   updateRenderer();
 });
-```
 
-6. **Grab all the required html elememnts**
-
-```typescript
 // Sun Altitude Slider
 const altitudeSlider: HTMLCalciteSliderElement | null =
   document.querySelector("#altitudeSlider");
@@ -275,11 +101,8 @@ if (!adjustCheckBox) {
   throw new Error("Adjust checkbox not found");
 }
 adjustCheckBox.addEventListener("calciteCheckboxChange", updateRenderer);
-```
 
-7. **Add hillshade type selection**
-
-```typescript
+// Hillshade Type Select
 const hillshadeTypeSelect: HTMLCalciteSelectElement | null = document.querySelector("#hillshadeTypeSelect");
 if (!hillshadeTypeSelect) {
   throw new Error("Hillshade type select not found");
@@ -298,11 +121,8 @@ hillshadeTypeSelect.addEventListener("calciteSelectChange", () => {
   }
   updateRenderer();
 });
-```
 
-8. **Add the helper functions**
-
-```typescript
+// Helper functions
 function changeColorRamp(name: string) {
   const colors = colorRamps.byName(name);
   return colorRamps.createColorRamp(
@@ -334,23 +154,3 @@ function updateRenderer() {
   renderer.colorRamp = tintedCheckBox?.checked ? colorRamp : null;
   layer.renderer = renderer;
 }
-```
-
-## Running the Application
-
-1. **Development Server**
-```bash
-npm run dev
-```
-This will start the development server at `http://localhost:5173`
-
-2. **Build for Production**
-```bash
-npm run build
-```
-This will create a production-ready build in the `dist` directory
-
-3. **Preview Production Build**
-```bash
-npm run preview
-```

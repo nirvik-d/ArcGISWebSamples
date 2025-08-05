@@ -1,51 +1,87 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
-    <title>ImageryTileLayer - shaded relief renderer | Sample | ArcGIS Maps SDK for JavaScript 4.32</title>
-
-    <script type="module" src="https://js.arcgis.com/calcite-components/3.0.3/calcite.esm.js"></script>
-    <link rel="stylesheet" href="https://js.arcgis.com/4.32/esri/themes/light/main.css" />
-    <script src="https://js.arcgis.com/4.32/"></script>
-
-    <link rel="stylesheet" href="./src/style.css" />
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <title>
+      ImageryTileLayer - shaded relief renderer | Sample | ArcGIS Maps SDK for
+      JavaScript 4.32
+    </title>
   </head>
 
   <body>
     <calcite-shell content-behind>
-      <div id="viewDiv"></div>
+      <arcgis-map basemap="gray-vector" center="-111.819, 37.111" zoom="7">
+      </arcgis-map>
       <calcite-shell-panel slot="panel-end" display-mode="float">
-        <calcite-block open id="rendererPanel" heading="Shaded Relief Parameters">
-          <calcite-label> Select Type:
+        <calcite-block
+          expanded
+          id="rendererPanel"
+          heading="Shaded Relief Parameters"
+        >
+          <calcite-label>
+            Select Type:
             <calcite-select id="hillshadeTypeSelect">
               <calcite-option value="traditional">traditional</calcite-option>
-              <calcite-option value="multi-directional">multi-directional</calcite-option>
+              <calcite-option value="multi-directional"
+                >multi-directional</calcite-option
+              >
             </calcite-select>
           </calcite-label>
-          <calcite-label> Select Color Ramp:
+          <calcite-label>
+            Select Color Ramp:
             <calcite-select id="colorRampSelect"></calcite-select>
           </calcite-label>
-          <calcite-label> Exaggeration Factor:
-            <calcite-slider id="zFactorSlider" value="1" label-handles label-ticks max="10" min="1" ticks="1"></calcite-slider>
+          <calcite-label>
+            Exaggeration Factor:
+            <calcite-slider
+              id="zFactorSlider"
+              value="1"
+              label-handles
+              label-ticks
+              max="10"
+              min="1"
+              ticks="1"
+            ></calcite-slider>
           </calcite-label>
-          <calcite-label> Sun Altitude:
-            <calcite-slider id="altitudeSlider" value="45" label-handles label-ticks max="90" min="0" max-label="90" min-label="0" ticks="90"></calcite-slider>
+          <calcite-label>
+            Sun Altitude:
+            <calcite-slider
+              id="altitudeSlider"
+              value="45"
+              label-handles
+              label-ticks
+              max="90"
+              min="0"
+              max-label="90"
+              min-label="0"
+              ticks="90"
+            ></calcite-slider>
           </calcite-label>
-          <calcite-label> Sun Azimuth:
-            <calcite-slider id="azimuthSlider" value="315" label-handles max="360" min="0"></calcite-slider>
+          <calcite-label>
+            Sun Azimuth:
+            <calcite-slider
+              id="azimuthSlider"
+              value="315"
+              label-handles
+              max="360"
+              min="0"
+            ></calcite-slider>
           </calcite-label>
-          <calcite-block open>
           <calcite-label layout="inline">
-              <calcite-checkbox id="tinted" checked></calcite-checkbox>
-              Tinted hillshade
+            <calcite-checkbox id="tinted" checked></calcite-checkbox>
+            Tinted hillshade
           </calcite-label>
-           <calcite-label layout="inline">
-              <calcite-checkbox id="adjust" checked></calcite-checkbox>
-              Adjust for large scale
+          <calcite-label layout="inline">
+            <calcite-checkbox id="adjust" checked></calcite-checkbox>
+            Adjust for large scale
           </calcite-label>
+        </calcite-block>
       </calcite-shell-panel>
     </calcite-shell>
-    <script type="module" src="./src/main.js"></script>
+    <script type="module" src="./src/main.ts"></script>
   </body>
 </html>

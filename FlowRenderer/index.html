@@ -6,14 +6,13 @@
   <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
   <title>FlowRenderer with effects and blending | Sample | ArcGIS Maps SDK for JavaScript 4.32</title>
 
-  <link rel="stylesheet" href="https://js.arcgis.com/4.32/esri/themes/dark/main.css" />
-  <script src="https://js.arcgis.com/4.32/"></script>
-
-  <link rel="stylesheet" href="./src/style.css" />
-
-  </head>
-  <body>
-    <div id="viewDiv"></div>
-    <script type="module" src="./src/main.js"></script>
-  </body>
+</head>
+<body>
+  <arcgis-map center="-289666, -3085785" scale="40000000">
+    <arcgis-zoom position="top-left"></arcgis-zoom>
+    <arcgis-fullscreen position="top-left"></arcgis-fullscreen>
+    <arcgis-legend position="top-right"></arcgis-legend>
+  </arcgis-map>
+  <script type="module" src="./src/main.ts"></script>
+</body>
 </html>
